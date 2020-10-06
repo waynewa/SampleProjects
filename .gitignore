@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Customers.Framework/bin/Debug
+/Customers.Framework/.vs/Customers.Framework/v16
+/Customers.Framework/.vs/Customers.Framework/DesignTimeBuild
+/Customers.Framework/obj
+/SampleTests/bin/Debug/net48
+/SampleTests/obj
+/.vs/CustomerProjects/v16/TestStore/0
+/.vs/slnx.sqlite
+/.vs/Customers.Framework/v16/TestStore/0
+/.vs/Customers.Framework/v16
+/.vs
