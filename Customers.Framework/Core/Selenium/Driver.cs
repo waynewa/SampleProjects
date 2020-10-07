@@ -1,9 +1,7 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading;
+using static Customers.Framework.Core.Helpers.LogHelper;
 
 namespace Customers.Framework.Core.Selenium
 {
@@ -31,7 +29,7 @@ namespace Customers.Framework.Core.Selenium
         {
             _driver = new WebDriverFactory().CreateWebDriver(webBrowser);
             Wait = new Wait(30);
-            FW.Log.Info("Driver Initialization Complete");
+            Log.Info("Driver Initialization Complete");
         }
         /// <summary>
         /// Currnet driver session utilized at the time
@@ -49,7 +47,7 @@ namespace Customers.Framework.Core.Selenium
                 url = $"http://{url}";
             }
             Current.Navigate().GoToUrl(url);
-            FW.Log.Info($"Navigating to URL : {url}");
+            Log.Step($"Navigating to URL : {url}");
         }
 
         /// <summary>
@@ -85,6 +83,7 @@ namespace Customers.Framework.Core.Selenium
         /// <param name="pageWaitTime">Interger wait time in seconds</param>
         public static void WaitForPageLoad(int pageWaitTime)
         {
+            Log.Info($"Waiting {pageWaitTime} seconds for the page to load ");
             Current.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(pageWaitTime);
         }
 
@@ -94,7 +93,7 @@ namespace Customers.Framework.Core.Selenium
         public static void Close()
         {
             Current.Close();
-            FW.Log.Info("Driver Session Closed");
+            Log.Info("Driver Session Closed");
         }
 
         /// <summary>
@@ -103,7 +102,7 @@ namespace Customers.Framework.Core.Selenium
         public static void Quit()
         {
             Current.Quit();
-            FW.Log.Info("Quit Driver Session");
+            Log.Info("Quit Driver Session");
         }
     }
 }

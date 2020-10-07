@@ -5,7 +5,8 @@ using System.IO;
 
 namespace Customers.Framework.Core.Logging
 {
-    public class Logger
+    public class Logger : Helpers.ExtentReportHelper
+
     {
         //Define variable for file path 
         private readonly string _filePath;
@@ -94,3 +95,4 @@ namespace Customers.Framework.Core.Logging
     }
 
 }
+

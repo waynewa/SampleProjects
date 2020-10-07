@@ -1,26 +1,31 @@
-﻿using Customers.Framework;
+﻿using static Customers.Framework.Core.Helpers.LogHelper;
 using Customers.Framework.Core.Selenium;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NUnit.Framework;
 using System;
+using System.Threading;
 
 namespace SampleTests.Tests.Base
 {
     public class BaseTest
     {
-        [OneTimeSetUp]
-        public void BeforeAll()
+        public TestContext TestContext { get; set; }
+
+        private static TestContext _testContext;
+        [ClassInitialize]
+        public void BeforeAll(TestContext testContext)
         {
-            FW.CreateTestResultsDirectory();
+            _testContext = testContext;
+            CreateTestResultsDirectory();
         }
 
         [TestInitialize]
         public void TestInit()
         {
-            FW.SetLogger();
+            SetLogger(TestContext.TestName);
             Driver.Init(WebBrowser.Edge);
             Driver.Goto("https://demoqa.com");
-            FW.Log.Info("Test Initilization Complete");
+            Thread.Sleep(3000);
+            Log.Info("Test Initilization Complete");
         }
 
         [TestCleanup]
@@ -29,12 +34,12 @@ namespace SampleTests.Tests.Base
             try
             {
                 Driver.Quit();
-                FW.Log.Info("Test Clean up Complete");
+                Log.Info("Test Clean up Complete");
             }
             catch (Exception e)
             {
                 Driver.Quit();
-                FW.Log.Fatal($"Test Clean up Failed :{e.Message}");
+                Log.Fatal($"Test Clean up Failed :{e.Message}");
             }
         }
         [ClassCleanup]
@@ -42,7 +47,7 @@ namespace SampleTests.Tests.Base
         {
             Driver.Close();
             Driver.Quit();
-            FW.Log.Info("Class Clean Up Completed");
+            Log.Info("Class Clean Up Completed");
         }
     }
 }

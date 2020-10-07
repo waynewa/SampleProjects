@@ -2,16 +2,21 @@
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using static Customers.Framework.Core.Helpers.LogHelper;
 
 
 namespace Customers.Framework.Core.Services
-{
+{  
+     /// <summary>
+     /// This services Class requires some refactoring as it is only
+     /// exsample indications at the moment
+     /// </summary>
     public static class APIServices
     {
         public const string ApiURI = "";
         public static IList<Info> GetAPIFunctions()
-
         {
+            Log.Info("Api Services");
             var client = new RestClient(ApiURI);
             var request = new RestRequest
             {
