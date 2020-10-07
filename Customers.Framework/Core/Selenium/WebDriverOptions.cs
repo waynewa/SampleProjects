@@ -10,9 +10,10 @@ namespace Customers.Framework.Core.Selenium
         public ChromeOptions GetChromeOptions()
         {
             ChromeOptions chromeOption = new ChromeOptions();
-            chromeOption.AddArguments("--disable-extensions");
-            
-            
+            chromeOption.AddArguments("disable-extensions");
+            chromeOption.AddArguments("start-maximized");
+            chromeOption.AddArguments("incognito");
+            chromeOption.AddArguments("test-type");
             return chromeOption;
         }
 
@@ -20,24 +21,20 @@ namespace Customers.Framework.Core.Selenium
         {
             FirefoxOptions fireFoxOption = new FirefoxOptions();
             fireFoxOption.AddArguments("--disable-extensions");
-
-
             return fireFoxOption;
         }
 
         public InternetExplorerOptions GetInternetExplorerOptions()
         {
             InternetExplorerOptions ieOptions = new InternetExplorerOptions();
-
             return ieOptions;
         }
 
         public EdgeOptions GetEdgeOptions()
         {
             EdgeOptions edgeOptions = new EdgeOptions();
-
+            edgeOptions.AddAdditionalCapability("InPrivate", true);
             return edgeOptions;
-        
         }
     }
 }

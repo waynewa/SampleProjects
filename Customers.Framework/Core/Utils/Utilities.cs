@@ -9,18 +9,14 @@ namespace Customers.Framework.Core.Utils
     {
         public static void SendKeysToSearchBox(IWebElement element, string value)
         {
-            Driver.WaitforVisibiltyOfElement(element);
             element.SendKeys(value);
-            Console.WriteLine($"Entered the {value} into the search box");
+            FW.Log.Info($"Entered the {value} into the search box");
         }
 
         public static void ClickOnElement(IWebElement element)
         {
-            Driver.WaitforVisibiltyOfElement(element);
             element.Click();
-            Console.WriteLine($"Clicked on {element.Text}");
+            FW.Log.Info($"Clicked on {element.Text}");
         }
-
-
     }
 }

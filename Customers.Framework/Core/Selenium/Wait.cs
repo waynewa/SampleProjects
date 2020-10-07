@@ -28,5 +28,19 @@ namespace Customers.Framework.Core.Selenium
 
             return _wait.Until(condition);
         }
+
+        public void WaitForElementToBeDisplayed(IWebElement webElement, string elementDescription = "Element")
+        {
+            try
+            {
+                Driver.Wait.Until(driver => webElement.Displayed);
+                FW.Log.Info($"The {elementDescription} is Displayed");
+            }
+            catch (Exception e)
+            {
+                FW.Log.Error($"Element not Displayed error: {e.Message}");
+            }
+        }
+
     }
 }
