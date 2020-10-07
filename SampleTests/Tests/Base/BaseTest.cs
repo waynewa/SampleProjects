@@ -2,6 +2,7 @@
 using Customers.Framework.Core.Selenium;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
+using System;
 
 namespace SampleTests.Tests.Base
 {
