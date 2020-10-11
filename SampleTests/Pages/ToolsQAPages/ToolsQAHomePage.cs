@@ -1,7 +1,7 @@
-﻿using Customers.Framework.Core.Selenium;
-using Customers.Framework.Core.Utils;
+﻿using SeleniumBase.Framework.Core.Selenium;
+using SeleniumBase.Framework.Core.Utils;
 using OpenQA.Selenium;
-using static Customers.Framework.Core.Helpers.LogHelper;
+using static SeleniumBase.Framework.Core.Helpers.LogHelper;
 
 namespace SampleTests.Pages
 {

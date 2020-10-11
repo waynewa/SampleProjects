@@ -1,5 +1,5 @@
-﻿using static Customers.Framework.Core.Helpers.LogHelper;
-using Customers.Framework.Core.Selenium;
+﻿using static SeleniumBase.Framework.Core.Helpers.LogHelper;
+using SeleniumBase.Framework.Core.Selenium;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading;

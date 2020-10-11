@@ -1,6 +1,6 @@
 ﻿
 
-using Customers.Framework.Core.Selenium;
+using SeleniumBase.Framework.Core.Selenium;
 using OpenQA.Selenium;
 
 namespace SampleTests.Pages.ToolsQAPages

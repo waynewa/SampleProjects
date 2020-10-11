@@ -16,7 +16,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-  <ProjectReference Include="..\Customers.Framework\Customers.Framework.csproj" />
+  <ProjectReference Include="..\SeleniumBase.Framework\SeleniumBase.Framework.csproj" />
     
   </ItemGroup>
 
