@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using SeleniumBase.Framework.Core.Selenium;
 using static SeleniumBase.Framework.Core.Helpers.LogHelper;
 
 namespace SeleniumBase.Framework.Core.Utils
@@ -34,6 +35,18 @@ namespace SeleniumBase.Framework.Core.Utils
             {
                 Log.Step($"Clicked on {elementDescription}");
             }
+        }
+
+        /// <summary>
+        /// Scroll on the page until the given element is found 
+        /// </summary>
+        /// <param name="element"></param>
+        public static void ScrollToElement(IWebElement element)
+        {
+            Log.Info($"Scrolling to {element.Text}");
+            IJavaScriptExecutor js = (IJavaScriptExecutor)Driver.Current;
+            //This will scroll the page till the element is found		
+            js.ExecuteScript("arguments[0].scrollIntoView(true);", element);
         }
 
 

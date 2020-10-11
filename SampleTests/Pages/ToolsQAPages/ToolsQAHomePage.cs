@@ -25,6 +25,7 @@ namespace SampleTests.Pages
         public static void ClickOnNavigationByName(string navigationLinkName)
         {
             Log.Info(NavigationTile(navigationLinkName).Text);
+            Utils.ScrollToElement(NavigationTile(navigationLinkName));
             Utils.ClickOnElement(NavigationTile(navigationLinkName));
         }
 
