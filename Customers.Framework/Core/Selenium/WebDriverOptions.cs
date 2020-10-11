@@ -50,6 +50,7 @@ namespace Customers.Framework.Core.Selenium
         {
             EdgeOptions edgeOptions = new EdgeOptions();
             edgeOptions.AddAdditionalCapability("InPrivate", true);
+            edgeOptions.AddAdditionalCapability("ignoreZoomSetting", true);
             return edgeOptions;
         }
     }

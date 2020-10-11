@@ -2,7 +2,7 @@
 using System.IO;
 using Customers.Framework.Core.Logging;
 using System.Diagnostics;
-
+using System.Threading;
 
 namespace Customers.Framework.Core.Helpers
 {
@@ -43,11 +43,25 @@ namespace Customers.Framework.Core.Helpers
         /// </summary>
         public static void SetLogger(string testName)
         {
-            var testResultsDir = WORKSPACE_DIRECTORY + "TestResults";
-            var fullPath = $"{testResultsDir}\\{testName}";
-            CurrentTestDirectory = Directory.CreateDirectory(fullPath);
-            _logger = new Logger(testName, CurrentTestDirectory.FullName + "/log.txt");
-            Debug.WriteLine("Log File Created");
+            lock (_setLoggerLock)
+            {
+                var testResultsDir = WORKSPACE_DIRECTORY + "TestResults";
+                var fullPath = $"{testResultsDir}\\{testName}";
+                CurrentTestDirectory = Directory.CreateDirectory(fullPath);
+                _logger = new Logger(testName, CurrentTestDirectory.FullName + "/log.txt");
+                Debug.WriteLine("Log File Created");
+                if (Directory.Exists(fullPath))
+                {
+                    CurrentTestDirectory = Directory.CreateDirectory(fullPath + Thread.CurrentThread.ManagedThreadId);
+                }
+                else
+                {
+                    CurrentTestDirectory = Directory.CreateDirectory(fullPath);
+                }
+
+            }
         }
+
+        private static object _setLoggerLock = new object();
     }
 }

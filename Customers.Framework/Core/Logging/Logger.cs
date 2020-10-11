@@ -56,7 +56,7 @@ namespace Customers.Framework.Core.Logging
         /// Logging with prefix of Info
         /// </summary>
         /// <param name="message">Text to be written</param>
-        public void Info(string message)
+        public new void Info(string message)
         {
             WriteLine($"[INFO]: {message}");
         }
@@ -68,7 +68,7 @@ namespace Customers.Framework.Core.Logging
         {
             WriteLine($"     [STEP]: {message}");
         }
-        public void Warning(string message)
+        public new void Warning(string message)
         {
             WriteLine($"[WARNING]: {message}");
         }
@@ -77,7 +77,7 @@ namespace Customers.Framework.Core.Logging
         /// Logging with prefix of Error
         /// </summary>
         /// <param name="message">Text to be written</param>
-        public void Error(string message)
+        public new void Error(string message)
         {
             WriteLine($"[ERROR]: {message}");
             Assert.Fail($"[ERROR]: {message}]");
@@ -87,7 +87,7 @@ namespace Customers.Framework.Core.Logging
         /// Logging with prefix of Fatal
         /// </summary>
         /// <param name="message">Text to be written</param>
-        public void Fatal(string message)
+        public new void Fatal(string message)
         {
             WriteLine($"[FATAL]: {message}");
             Assert.Fail($"[FATAL]: {message}]");
