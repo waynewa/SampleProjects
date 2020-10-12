@@ -14,12 +14,13 @@ namespace SampleTests.Tests.Base
         public static string TestUrl { get; set; }
         public static string BrowserType { get; set; }
 
+
         [AssemblyInitialize]
         public static void BeforeAll(TestContext testContext)
         {
             TestContextLoader = new TestContextLoader(testContext);
             TestUrl = TestContextLoader.GetProperty("TestUrl", "https://demoqa.com");
-            BrowserType = TestContextLoader.GetProperty("BrowserType", "Edge");
+            BrowserType = TestContextLoader.GetProperty("BrowserType", "Chrome");
             CreateTestResultsDirectory();
         }
 

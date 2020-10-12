@@ -2,7 +2,7 @@
 <RunSettings>
   <!-- Parameters used by tests at runtime on the New Environment -->
   <TestRunParameters>
-    <Parameter name="TestUrl " value="https://demoqa.com" />
+    <Parameter name="TestUrl" value="https://demoqa.com" />
 
     <!--Browser Type has a Selection of 
     - Firefox
@@ -11,7 +11,7 @@
     - Chrome
     -->
 
-    <Parameter name="BrowserType" value="Edge" />
+    <Parameter name="BrowserType" value="Chrome" />
 
   </TestRunParameters>
 </RunSettings>

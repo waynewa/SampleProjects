@@ -29,7 +29,7 @@ namespace SeleniumBase.Framework.Core.Utils
             element.Click();
             if (elementDescription == "Element")
             {
-                Log.Step($"Clicked on {element.Text}");
+                Log.Step($"Clicked on {elementDescription}");
             }
             else
             {
