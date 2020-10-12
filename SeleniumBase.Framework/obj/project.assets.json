@@ -4551,28 +4551,34 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\WalWay\\.nuget\\packages\\": {}
+    "C:\\Users\\waynewa\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Work\\Git\\CustomerProjects\\SeleniumBase.Framework\\SeleniumBase.Framework.csproj",
+      "projectUniqueName": "C:\\Work\\CustomerProjects\\SeleniumBase.Framework\\SeleniumBase.Framework.csproj",
       "projectName": "SeleniumBase.Framework",
-      "projectPath": "C:\\Work\\Git\\CustomerProjects\\SeleniumBase.Framework\\SeleniumBase.Framework.csproj",
-      "packagesPath": "C:\\Users\\WalWay\\.nuget\\packages\\",
-      "outputPath": "C:\\Work\\Git\\CustomerProjects\\SeleniumBase.Framework\\obj\\",
+      "projectPath": "C:\\Work\\CustomerProjects\\SeleniumBase.Framework\\SeleniumBase.Framework.csproj",
+      "packagesPath": "C:\\Users\\waynewa\\.nuget\\packages\\",
+      "outputPath": "C:\\Work\\CustomerProjects\\SeleniumBase.Framework\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\WalWay\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\waynewa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net48"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://pkgs.dev.azure.com/rymanhealthcare/_packaging/InternalPackages/nuget/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net48": {
