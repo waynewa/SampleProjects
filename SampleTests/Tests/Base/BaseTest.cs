@@ -6,15 +6,20 @@ using System.Threading;
 
 namespace SampleTests.Tests.Base
 {
-    public class BaseTest
+    [TestClass]
+    public abstract class BaseTest
     {
+        protected static TestContextLoader TestContextLoader;
         public TestContext TestContext { get; set; }
+        public static string TestUrl { get; set; }
+        public static string BrowserType { get; set; }
 
-        private static TestContext _testContext;
-        [ClassInitialize]
-        public void BeforeAll(TestContext testContext)
+        [AssemblyInitialize]
+        public static void BeforeAll(TestContext testContext)
         {
-            _testContext = testContext;
+            TestContextLoader = new TestContextLoader(testContext);
+            TestUrl = TestContextLoader.GetProperty("TestUrl", "https://demoqa.com");
+            BrowserType = TestContextLoader.GetProperty("BrowserType", "Edge");
             CreateTestResultsDirectory();
         }
 
@@ -22,8 +27,8 @@ namespace SampleTests.Tests.Base
         public void TestInit()
         {
             SetLogger(TestContext.TestName);
-            Driver.Init(WebBrowser.Edge);
-            Driver.Goto("https://demoqa.com");
+            Driver.Init(BrowserType);
+            Driver.Goto(TestUrl);
             Thread.Sleep(3000);
             Log.Info("Test Initilization Complete");
         }

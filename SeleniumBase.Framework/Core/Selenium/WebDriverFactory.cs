@@ -17,25 +17,25 @@ namespace SeleniumBase.Framework.Core.Selenium
         /// </summary>
         /// <param name="name">Browser name i.e.: Chrome</param>
         /// <returns></returns>
-        public IWebDriver CreateWebDriver(WebBrowser name)
+        public IWebDriver CreateWebDriver(string name)
         {
             switch (name)
             {
-                case WebBrowser.Firefox:
+                case "Firefox":
                     new DriverManager().SetUpDriver(new FirefoxConfig());
                     Driver = new FirefoxDriver();
                     return Driver;
-                case WebBrowser.Edge:
+                case "Edge":
                     new DriverManager().SetUpDriver(new EdgeConfig());
                     Driver = new EdgeDriver();
                     return Driver;
-                case WebBrowser.InternetExplorer:
+                case "InternetExplorer":
                     new DriverManager().SetUpDriver(new InternetExplorerConfig());
                     Driver = new InternetExplorerDriver();
                     return Driver;
-                case WebBrowser.Remote:
+                case "Remote":
                     return null;
-                case WebBrowser.Chrome:
+                case "Chrome":
                     new DriverManager().SetUpDriver(new ChromeConfig());
                     ChromeOptions options = new WebDriverOptions().GetChromeOptions();
                     Driver = new ChromeDriver(options);
@@ -45,17 +45,5 @@ namespace SeleniumBase.Framework.Core.Selenium
                     return null;
             }
         }
-    }
-
-    /// <summary>
-    /// Enumaratble values of the WebBrowser types
-    /// </summary>
-    public enum WebBrowser
-    {
-        Edge,
-        InternetExplorer,
-        Firefox,
-        Chrome,
-        Remote
     }
 }
