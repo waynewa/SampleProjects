@@ -23,7 +23,7 @@ namespace SampleTests.Tests.ToolsQATests
         {
             ToolsQAElementsPage.NaviageToElementMenuItem("Text Box");
             PageBase.NavigateToSubMenuItem("Text Box");
-            ToolsQAElementsPage.CompleteTextBoxFields("Test User","test@user.com","123 test street","456 onother test street");
+            ToolsQAElementsPage.CompleteTextBoxFields("Test User","test@user.com","123 test street","456 Another test street");
             PageBase.ClickOnSubmitButton();
         
         }

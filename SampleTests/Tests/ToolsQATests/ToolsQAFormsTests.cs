@@ -43,10 +43,18 @@ namespace SampleTests.Tests.ToolsQATests
                 WriteStepToLogs("Validated the Page Header");
                 //3. Select the Practice Form Menu Item
                 Thread.Sleep(3000);
+            if (!ToolsQAFormsPage.PracticeFormMenuItem.Displayed)
+            {
                 ToolsQAFormsPage.NavigationFormMenuItem.Click();
                 WriteStepToLogs("Clicked on the Navigation Form Menu item");
                 ToolsQAFormsPage.PracticeFormMenuItem.Click();
                 WriteStepToLogs("Clicked on the 'Practice Form Menu item'");
+            }
+            else 
+            {
+                ToolsQAFormsPage.PracticeFormMenuItem.Click();
+                WriteStepToLogs("Clicked on the 'Practice Form Menu item'");
+            }
                 //4. Complete Student Registration form
                 ToolsQAFormsPage.FirstNameInputField.SendKeys("Tester_FirstName");
                 WriteStepToLogs("Entered FirstName Value");

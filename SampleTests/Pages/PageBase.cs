@@ -29,7 +29,8 @@ namespace SampleTests.Pages
 
         public static void ClickOnSubmitButton()
         {
-            Utils.ClickOnElement(SubmitButton, "Submit Button");
+                Utils.ScrollToElement(SubmitButton);
+                Utils.ClickOnElement(SubmitButton, "Submit Button");
         }
     }
 }
