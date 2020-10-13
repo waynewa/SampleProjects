@@ -57,5 +57,23 @@ namespace SeleniumBase.Framework.Core.Selenium
             }
         }
 
+        /// <summary>
+        /// This methond waits for a element to be displayed , and has additional description attribute
+        /// </summary>
+        /// <param name="webElement">Element to be displayed</param>
+        /// <param name="elementDescription">Description of the element </param>
+        public void WaitForElementToBeEnabled(IWebElement webElement, string elementDescription = "Element")
+        {
+            try
+            {
+                Driver.Wait.Until(driver => webElement.Enabled);
+                Log.Info($"The {elementDescription} is Enabled");
+            }
+            catch (Exception e)
+            {
+                Log.Error($"Element not Enabled error: {e.Message}");
+            }
+        }
+
     }
 }

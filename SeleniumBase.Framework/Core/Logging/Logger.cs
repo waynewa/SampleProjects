@@ -73,6 +73,11 @@ namespace SeleniumBase.Framework.Core.Logging
             WriteLine($"[WARNING]: {message}");
         }
 
+        public new void Pass(string message)
+        {
+            WriteLine($"[PASS]: {message}");
+        }
+
         /// <summary>
         /// Logging with prefix of Error
         /// </summary>

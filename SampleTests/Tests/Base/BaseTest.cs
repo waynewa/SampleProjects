@@ -6,15 +6,21 @@ using System.Threading;
 
 namespace SampleTests.Tests.Base
 {
-    public class BaseTest
+    [TestClass]
+    public abstract class BaseTest
     {
+        protected static TestContextLoader TestContextLoader;
         public TestContext TestContext { get; set; }
+        public static string TestUrl { get; set; }
+        public static string BrowserType { get; set; }
 
-        private static TestContext _testContext;
-        [ClassInitialize]
-        public void BeforeAll(TestContext testContext)
+
+        [AssemblyInitialize]
+        public static void BeforeAll(TestContext testContext)
         {
-            _testContext = testContext;
+            TestContextLoader = new TestContextLoader(testContext);
+            TestUrl = TestContextLoader.GetProperty("TestUrl", "https://demoqa.com");
+            BrowserType = TestContextLoader.GetProperty("BrowserType", "Chrome");
             CreateTestResultsDirectory();
         }
 
@@ -22,8 +28,8 @@ namespace SampleTests.Tests.Base
         public void TestInit()
         {
             SetLogger(TestContext.TestName);
-            Driver.Init(WebBrowser.Edge);
-            Driver.Goto("https://demoqa.com");
+            Driver.Init(BrowserType);
+            Driver.Goto(TestUrl);
             Thread.Sleep(3000);
             Log.Info("Test Initilization Complete");
         }
@@ -33,21 +39,32 @@ namespace SampleTests.Tests.Base
         {
             try
             {
+
+                
                 Driver.Quit();
-                Log.Info("Test Clean up Complete");
+                Log.Pass(TestContext.TestName);
             }
             catch (Exception e)
             {
                 Driver.Quit();
-                Log.Fatal($"Test Clean up Failed :{e.Message}");
+                Log.Error($"Test Clean up Failed :{e.Message}");
             }
         }
         [ClassCleanup]
         public void CleanUpClass()
         {
-            Driver.Close();
+            
             Driver.Quit();
             Log.Info("Class Clean Up Completed");
+        }
+        public void WriteStepToLogs(string message)
+        {
+            Log.Step(message);
+        }
+
+        public void WriteFailToLogs(string message)
+        {
+            Log.Error(message);
         }
     }
 }
