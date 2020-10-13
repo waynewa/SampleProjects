@@ -4,6 +4,8 @@
     <TargetFramework>net48</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <UserSecretsId>db29549c-253b-4c5a-bf73-d5cd18ac0eef</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
