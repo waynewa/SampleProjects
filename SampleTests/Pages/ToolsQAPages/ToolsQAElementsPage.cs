@@ -25,7 +25,7 @@ namespace SampleTests.Pages.ToolsQAPages
         public static IWebElement EmailInputField => Driver.FindElement(By.CssSelector("#userEmail"));
         public static IWebElement CurrentAddressTextBox => Driver.FindElement(By.CssSelector("#currentAddress"));
         public static IWebElement PermanentAddressTextBox => Driver.FindElement(By.CssSelector("#permanentAddress"));
-        public static IWebElement SubmitButton => Driver.FindElement(By.CssSelector("#submit"));
+        
 
 
         public static void NaviageToElementMenuItem(string subMenuItem)
@@ -57,10 +57,7 @@ namespace SampleTests.Pages.ToolsQAPages
 
         }
 
-        public static void ClickOnSubmitButton()
-        {
-            Utils.ClickOnElement(SubmitButton,"Submit Button");
-        }
+
 
     }
 }

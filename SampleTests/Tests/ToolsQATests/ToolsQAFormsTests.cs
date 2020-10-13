@@ -11,7 +11,7 @@ namespace SampleTests.Tests.ToolsQATests
     [TestClass]
     public class ToolsQAFormsTests : BaseTest
     {
-        
+
         [TestMethod]
         public void ClickOnFormsNavTile()
         {
@@ -33,33 +33,6 @@ namespace SampleTests.Tests.ToolsQATests
         [TestMethod]
         public void ClickOnFormsNavTileAndCompletePracticeForm()
         {
-            try
-            {
-                //Steps To Complete Test Case 
-                //1. Select the Forms Page Element
-                Utils.ScrollToElement(ToolsQAHomePage.NavigationTile("Forms"));
-                ToolsQAHomePage.NavigationTile("Forms").Click();
-                WriteStepToLogs("Clicking on the Forms Navigation Menu Tile");
-                //2. Assert the correct page is loaded 
-                Assert.IsTrue(PageBase.HeaderText.Text == ("Forms"), "The Header does not match the page Header");
-                WriteStepToLogs("Validated the Page Header");
-                //3. Select the Practice Form Menu Item
-                Thread.Sleep(3000);
-                ToolsQAFormsPage.NavigateToPracticeForm();
-                //4. Complete Student Registration form
-                ToolsQAFormsPage.CompletePraticeForm();
-                            }
-            catch (Exception e)
-            {
-                WriteFailToLogs("Test Failed " + e);
-            }
-
-        }
-        [TestMethod]
-        public void ClickOnFormsNavTileAndCompletePracticeForm_Method2()
-        {
-            try
-            {
                 //Steps To Complete Test Case 
                 //1. Select the Forms Page Element
                 Utils.ScrollToElement(ToolsQAHomePage.NavigationTile("Forms"));
@@ -87,26 +60,9 @@ namespace SampleTests.Tests.ToolsQATests
                 WriteStepToLogs("Selected the Music hobby checkbox");
                 ToolsQAFormsPage.AddressInputTextBox.SendKeys("123 test Road");
                 WriteStepToLogs("Entered 123 Test road");
-                ToolsQAFormsPage.StateDropDown.Click();
-                WriteStepToLogs("Selected the state Dropdown");
-                ToolsQAFormsPage.StateItemSelection("Uttar Pradesh").Click();
-                WriteStepToLogs("Selected Uttar Pradesh form list");
-                ToolsQAFormsPage.CityDropDown.Click();
-                WriteStepToLogs("Selected the City Dropdown");
-                ToolsQAFormsPage.CityItemSelection("Agra").Click();
-                WriteStepToLogs("Selected Agra from list");
                 Utils.ScrollToElement(ToolsQAFormsPage.SubmitButton);
                 ToolsQAFormsPage.SubmitButton.Click();
                 WriteStepToLogs("Clicked the Submit Button");
-
-            }
-            catch (Exception e)
-            {
-                WriteFailToLogs("Test Failed "+ e );
-            }
-
-
-
         }
 
     }

@@ -19,12 +19,12 @@ namespace SampleTests.Tests.ToolsQATests
         }
 
         [TestMethod]
-        public void CompleteElementsTextBoxSample()
+        public void ClickOnElementsNavTitleAndCompleteElementsTextBoxSample()
         {
             ToolsQAElementsPage.NaviageToElementMenuItem("Text Box");
             PageBase.NavigateToSubMenuItem("Text Box");
             ToolsQAElementsPage.CompleteTextBoxFields("Test User","test@user.com","123 test street","456 onother test street");
-            ToolsQAElementsPage.ClickOnSubmitButton();
+            PageBase.ClickOnSubmitButton();
         
         }
 

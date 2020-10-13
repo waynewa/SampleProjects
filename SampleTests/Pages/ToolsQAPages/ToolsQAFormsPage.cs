@@ -55,7 +55,6 @@ namespace SampleTests.Pages.ToolsQAPages
             Utils.ClickOnElement(CityItemSelection("Agra"));
             Utils.ScrollToElement(SubmitButton);
             Driver.Wait.WaitForElementToBeDisplayed(SubmitButton);
-            Utils.ClickOnElement(SubmitButton);
         }
     }
 
