@@ -39,21 +39,32 @@ namespace SampleTests.Tests.Base
         {
             try
             {
+
+                
                 Driver.Quit();
-                Log.Info("Test Clean up Complete");
+                Log.Pass(TestContext.TestName);
             }
             catch (Exception e)
             {
                 Driver.Quit();
-                Log.Fatal($"Test Clean up Failed :{e.Message}");
+                Log.Error($"Test Clean up Failed :{e.Message}");
             }
         }
         [ClassCleanup]
         public void CleanUpClass()
         {
-            Driver.Close();
+            
             Driver.Quit();
             Log.Info("Class Clean Up Completed");
+        }
+        public void WriteStepToLogs(string message)
+        {
+            Log.Step(message);
+        }
+
+        public void WriteFailToLogs(string message)
+        {
+            Log.Error(message);
         }
     }
 }

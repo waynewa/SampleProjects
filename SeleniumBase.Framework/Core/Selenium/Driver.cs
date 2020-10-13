@@ -88,21 +88,14 @@ namespace SeleniumBase.Framework.Core.Selenium
             }
 
             /// <summary>
-            /// Browser session close function
-            /// </summary>
-            public static void Close()
-            {
-                Current.Close();
-                Log.Info("Driver Session Closed");
-            }
-
-            /// <summary>
             /// WebDriver Quit function
             /// </summary>
             public static void Quit()
-            {
-                Current.Quit();
-                Log.Info("Quit Driver Session");
-            }
+        {
+            Current.Close();
+            Log.Info("Closed Browser Session");
+            Current.Quit();
+            Log.Info("Quit Driver Session");
+        }
         }
     }

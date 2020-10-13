@@ -90,7 +90,6 @@ C:\Work\CustomerProjects\SeleniumBase.Framework\bin\Debug\net48\System.Security.
 C:\Work\CustomerProjects\SeleniumBase.Framework\bin\Debug\net48\System.Text.Encoding.CodePages.dll
 C:\Work\CustomerProjects\SeleniumBase.Framework\bin\Debug\net48\System.Text.Encodings.Web.dll
 C:\Work\CustomerProjects\SeleniumBase.Framework\bin\Debug\net48\WebDriverManager.dll
-C:\Work\CustomerProjects\SeleniumBase.Framework\obj\Debug\net48\SeleniumBase.Framework.csprojAssemblyReference.cache
 C:\Work\CustomerProjects\SeleniumBase.Framework\obj\Debug\net48\SeleniumBase.Framework.dll.config
 C:\Work\CustomerProjects\SeleniumBase.Framework\obj\Debug\net48\SeleniumBase.Framework.csproj.CoreCompileInputs.cache
 C:\Work\CustomerProjects\SeleniumBase.Framework\obj\Debug\net48\SeleniumBase.Framework.AssemblyInfoInputs.cache

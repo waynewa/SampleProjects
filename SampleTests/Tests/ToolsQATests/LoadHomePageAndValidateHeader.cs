@@ -2,6 +2,7 @@
 using SampleTests.Pages;
 using SampleTests.Pages.ToolsQAPages;
 using SampleTests.Tests.Base;
+using SeleniumBase.Framework.Core.Utils;
 using System.Threading;
 
 namespace SampleTests.Tests.ToolsQATests
@@ -15,20 +16,8 @@ namespace SampleTests.Tests.ToolsQATests
             Assert.IsTrue(ToolsQAHomePage.HeaderTitle.Displayed, "The Home page does not display correct Title");
         }
 
-        [TestMethod]
-        public void ClickOnElementsNavTile()
-        {
-            ToolsQAHomePage.ClickOnNavigationByName("Elements");
-            Assert.IsTrue(PageBase.HeaderText.Text == ("Elements"), "The Header does not match the page Header");
-            Thread.Sleep(3000);
-        }
 
-        [TestMethod]
-        public void ClickOnFormsNavTile()
-        {
-            ToolsQAHomePage.ClickOnNavigationByName("Forms");
-            Assert.IsTrue(PageBase.HeaderText.Text == ("Forms"), "The Header does not match the page Header");
-            Thread.Sleep(3000);
-        }
+
+     
     }
 }
