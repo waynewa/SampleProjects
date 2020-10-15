@@ -30,7 +30,6 @@ namespace SampleTests.Pages.ToolsQAPages
         public static IWebElement StateItemSelection(string stateValue) => Driver.FindElement(By.XPath($"//div[contains(text(),'{stateValue}')]"));
         public static IWebElement CityDropDown => Driver.FindElement(By.XPath("//body/div[@id='app']/div[1]/div[1]/div[2]/div[2]/div[1]/form[1]/div[10]/div[3]/div[1]/div[1]/div[2]/div[1]/*[1]"));
         public static IWebElement CityItemSelection(string cityValue) => Driver.FindElement(By.XPath($"//div[contains(text(),'{cityValue}')]"));
-        public static IWebElement SubmitButton => Driver.FindElement(By.CssSelector("#submit"));
 
      
 
