@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Remote;
 
 namespace SeleniumBase.Framework.Core.Selenium
 {
@@ -18,6 +19,23 @@ namespace SeleniumBase.Framework.Core.Selenium
             chromeOption.AddArguments("start-maximized");
             chromeOption.AddArguments("incognito");
             chromeOption.AddArguments("test-type");
+            return chromeOption;
+        }
+
+        /// <summary>
+        /// Method returns the Chrome browser options to be utilised when loading the chrome driver
+        /// </summary>
+        /// <returns>ChromeOptions</returns>
+        public ChromeOptions GetRemoteOptions()
+        {
+            ChromeOptions chromeOption = new ChromeOptions();
+            chromeOption.AddArguments("disable-extensions");
+            chromeOption.AddArguments("start-maximized");
+            chromeOption.AddArguments("incognito");
+            chromeOption.AddArguments("test-type");
+            chromeOption.AddAdditionalCapability(CapabilityType.Version,"Any",true);
+            chromeOption.AddAdditionalCapability(CapabilityType.Platform,"Windows",true);
+
             return chromeOption;
         }
 

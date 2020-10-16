@@ -13,7 +13,7 @@ namespace SampleTests.Tests.Base
         public TestContext TestContext { get; set; }
         public static string TestUrl { get; set; }
         public static string BrowserType { get; set; }
-
+        public static string GridUrl { get; set; }
 
         [AssemblyInitialize]
         public static void BeforeAll(TestContext testContext)
@@ -21,6 +21,7 @@ namespace SampleTests.Tests.Base
             TestContextLoader = new TestContextLoader(testContext);
             TestUrl = TestContextLoader.GetProperty("TestUrl", "https://demoqa.com");
             BrowserType = TestContextLoader.GetProperty("BrowserType", "Chrome");
+            GridUrl = TestContextLoader.GetProperty("GridUrl", "http://127.0.0.1:4444/wd/hub");
             CreateTestResultsDirectory();
         }
 
@@ -28,7 +29,10 @@ namespace SampleTests.Tests.Base
         public void TestInit()
         {
             SetLogger(TestContext.TestName);
-            Driver.Init(BrowserType);
+            if (BrowserType == "Remote")
+            { Driver.Init(BrowserType, GridUrl); }
+            else 
+            { Driver.Init(BrowserType); }
             Driver.Goto(TestUrl);
             Thread.Sleep(3000);
             Log.Info("Test Initilization Complete");

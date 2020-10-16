@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using static SeleniumBase.Framework.Core.Helpers.LogHelper;
@@ -13,7 +14,7 @@ namespace SeleniumBase.Framework.Core.Selenium
             [ThreadStatic]
             //Initial instantiation of the Selenium WebDriver 
             private static IWebDriver _driver;
-
+            private const string DefaultGridUrl = "Http://127.0.0.1:4444/wd/hub";
             /// <summary>
             /// The Thread Static tag allows for paralization.
             /// </summary>
@@ -25,9 +26,16 @@ namespace SeleniumBase.Framework.Core.Selenium
             /// Initializing the Webdriver with parameter 'webBrowser', this sets the browser type i.e.: Chorme
             /// </summary>
             /// <param name="webBrowser">Browser Type i.e.: Chrome,Edge</param>
-            public static void Init(string webBrowser)
+            public static void Init(string webBrowser,string remoteUrl= DefaultGridUrl)
+            {
+            if (remoteUrl == "")
             {
                 _driver = new WebDriverFactory().CreateWebDriver(webBrowser);
+            }
+            else
+            {
+                _driver = new WebDriverFactory().CreateWebDriver(webBrowser, remoteUrl);
+            }
                 Wait = new Wait(30);
                 Log.Info("Driver Initialization Complete");
             }

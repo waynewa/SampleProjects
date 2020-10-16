@@ -4,6 +4,8 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Remote;
+using System;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 
@@ -17,7 +19,7 @@ namespace SeleniumBase.Framework.Core.Selenium
         /// </summary>
         /// <param name="name">Browser name i.e.: Chrome</param>
         /// <returns></returns>
-        public IWebDriver CreateWebDriver(string name)
+        public IWebDriver CreateWebDriver(string name, string remoteURL = "")
         {
             switch (name)
             {
@@ -34,7 +36,9 @@ namespace SeleniumBase.Framework.Core.Selenium
                     Driver = new InternetExplorerDriver();
                     return Driver;
                 case "Remote":
-                    return null;
+                    ChromeOptions Options = new WebDriverOptions().GetRemoteOptions();
+                    Driver = new RemoteWebDriver(new Uri(remoteURL), Options.ToCapabilities());
+                    return Driver;
                 case "Chrome":
                     new DriverManager().SetUpDriver(new ChromeConfig());
                     ChromeOptions options = new WebDriverOptions().GetChromeOptions();
