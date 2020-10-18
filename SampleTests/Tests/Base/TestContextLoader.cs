@@ -7,7 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SampleTests.Tests.Base
-{/// <summary>
+{
+    /// <summary>
  /// Wraps <see cref="TestContext"/> abstract class to provide utility methods.
  /// </summary>
     public class TestContextLoader
