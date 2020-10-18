@@ -1,17 +1,25 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 using System;
+using System.Web.UI;
 using static SeleniumBase.Framework.Core.Helpers.LogHelper;
 
 namespace SeleniumBase.Framework.Core.Helpers
 {
-    public class ExtentReportHelper
+    public abstract class ExtentReportHelper
     {
-        public AventStack.ExtentReports.ExtentReports extent { get; set; }
-        public ExtentV3HtmlReporter htmlReporter { get; set; }
-        public ExtentTest extentTest { get; set; }
+        public static AventStack.ExtentReports.ExtentReports Extent => extent ?? throw new NullReferenceException("extent is null. StartReport() first.");
+        public static ExtentTest ExtentTest => extentTest ?? throw new NullReferenceException("extenttest is null. CreateTest() first.");
+        
+        public static ExtentV3HtmlReporter htmlReporter;
+        
+        [ThreadStatic]
+        private static AventStack.ExtentReports.ExtentReports extent;
+        [ThreadStatic]
+        private static ExtentTest extentTest;
 
-        public ExtentReportHelper StartReport()
+        
+        public static AventStack.ExtentReports.ExtentReports StartReport()
         {
             string projectPath = WORKSPACE_DIRECTORY;
             string reportPath = projectPath + "Reports\\TestRunReport.html";
@@ -23,12 +31,13 @@ namespace SeleniumBase.Framework.Core.Helpers
             extent.AttachReporter(htmlReporter);
             extent.AddSystemInfo("Machine", Environment.MachineName);
             extent.AddSystemInfo("OS", Environment.OSVersion.VersionString);
-            return this;
+            return extent;
         }
 
-        public void CreateTest(string testName)
+        public static ExtentTest CreateTest(AventStack.ExtentReports.ExtentReports _extent, string testName)
         {
-            extentTest = extent.CreateTest(testName);
+            extentTest = _extent.CreateTest(testName);
+            return extentTest;
         }
 
         public void Info(string message)
@@ -55,10 +64,6 @@ namespace SeleniumBase.Framework.Core.Helpers
             var mediaModel =
         MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build();
             extentTest.Fail("details", mediaModel);
-
-            // or:
-            extentTest.Fail("details",
-                MediaEntityBuilder.CreateScreenCaptureFromPath("screenshot.png").Build());
         }
     }
 }

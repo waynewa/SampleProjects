@@ -1,4 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using AventStack.ExtentReports;
+using Microsoft.Identity.Client;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SeleniumBase.Framework.Core.Helpers;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -8,6 +11,7 @@ namespace SeleniumBase.Framework.Core.Logging
     public class Logger : Helpers.ExtentReportHelper
 
     {
+
         //Define variable for file path 
         private readonly string _filePath;
         /// <summary>
@@ -59,6 +63,7 @@ namespace SeleniumBase.Framework.Core.Logging
         public new void Info(string message)
         {
             WriteLine($"[INFO]: {message}");
+            ExtentTest.Info($"[INFO]: {message}");
         }
         /// <summary>
         /// Logging with prefix of Step
@@ -67,15 +72,18 @@ namespace SeleniumBase.Framework.Core.Logging
         public void Step(string message)
         {
             WriteLine($"     [STEP]: {message}");
+            ExtentTest.Info($"     [STEP]: {message}");
         }
         public new void Warning(string message)
         {
             WriteLine($"[WARNING]: {message}");
+            ExtentTest.Warning($"[WARNING]: {message}");
         }
 
         public void Pass(string message)
         {
             WriteLine($"[PASS]: {message}");
+            ExtentTest.Pass($"[PASS]: {message}");
         }
 
         /// <summary>
@@ -85,6 +93,7 @@ namespace SeleniumBase.Framework.Core.Logging
         public new void Error(string message)
         {
             WriteLine($"[ERROR]: {message}");
+            ExtentTest.Error($"[ERROR]: {message}");
             Assert.Fail($"[ERROR]: {message}]");
         }
 
@@ -95,6 +104,7 @@ namespace SeleniumBase.Framework.Core.Logging
         public new void Fatal(string message)
         {
             WriteLine($"[FATAL]: {message}");
+            ExtentTest.Fatal($"[FATAL]: {message}");
             Assert.Fail($"[FATAL]: {message}]");
         }
     }

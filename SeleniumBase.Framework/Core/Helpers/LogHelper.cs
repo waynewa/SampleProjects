@@ -27,13 +27,13 @@ namespace SeleniumBase.Framework.Core.Helpers
         /// <returns>Created Test result Directory</returns>
         public static DirectoryInfo CreateTestResultsDirectory()
         {
-            var testDirectory = WORKSPACE_DIRECTORY = "TestResults";
+            var testDirectory = WORKSPACE_DIRECTORY;
             if (Directory.Exists(testDirectory))
             {
                 Debug.WriteLine("Driectory Exists!");
                 Directory.Delete(testDirectory, recursive: true);
             }
-
+            Debug.WriteLine(WORKSPACE_DIRECTORY );
             return Directory.CreateDirectory(testDirectory);
         }
 
