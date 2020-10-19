@@ -33,8 +33,8 @@ namespace SeleniumBase.Framework.Core.Selenium
             chromeOption.AddArguments("start-maximized");
             chromeOption.AddArguments("incognito");
             chromeOption.AddArguments("test-type");
-            chromeOption.AddAdditionalCapability(CapabilityType.Version,"Any",true);
-            chromeOption.AddAdditionalCapability(CapabilityType.Platform,"Windows",true);
+            chromeOption.AddAdditionalCapability(CapabilityType.Version, "Any", true);
+            chromeOption.AddAdditionalCapability(CapabilityType.Platform, "Windows", true);
 
             return chromeOption;
         }

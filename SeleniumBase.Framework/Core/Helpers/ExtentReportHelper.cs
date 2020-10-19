@@ -10,15 +10,15 @@ namespace SeleniumBase.Framework.Core.Helpers
     {
         public static AventStack.ExtentReports.ExtentReports Extent => extent ?? throw new NullReferenceException("extent is null. StartReport() first.");
         public static ExtentTest ExtentTest => extentTest ?? throw new NullReferenceException("extenttest is null. CreateTest() first.");
-        
+
         public static ExtentV3HtmlReporter htmlReporter;
-        
+
         [ThreadStatic]
-        private static AventStack.ExtentReports.ExtentReports extent;
+        private static readonly AventStack.ExtentReports.ExtentReports extent;
         [ThreadStatic]
         private static ExtentTest extentTest;
 
-        
+
         public static AventStack.ExtentReports.ExtentReports StartReport()
         {
             string projectPath = WORKSPACE_DIRECTORY;

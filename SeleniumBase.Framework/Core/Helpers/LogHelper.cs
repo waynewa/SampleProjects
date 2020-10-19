@@ -33,7 +33,7 @@ namespace SeleniumBase.Framework.Core.Helpers
                 Debug.WriteLine("Driectory Exists!");
                 Directory.Delete(testDirectory, recursive: true);
             }
-            Debug.WriteLine(WORKSPACE_DIRECTORY );
+            Debug.WriteLine(WORKSPACE_DIRECTORY);
             return Directory.CreateDirectory(testDirectory);
         }
 

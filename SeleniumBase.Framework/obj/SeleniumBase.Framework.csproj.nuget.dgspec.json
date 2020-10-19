@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Work\\Git\\CustomerProjects\\SeleniumBase.Framework\\SeleniumBase.Framework.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.0.3",
       "restore": {
         "projectUniqueName": "C:\\Work\\Git\\CustomerProjects\\SeleniumBase.Framework\\SeleniumBase.Framework.csproj",
         "projectName": "SeleniumBase.Framework",
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Work\\Git\\NugetPackages": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://pkgs.dev.azure.com/rymanhealthcare/_packaging/InternalPackages/nuget/v3/index.json": {}
         },
@@ -57,7 +58,7 @@
             },
             "Microsoft.Identity.Client": {
               "target": "Package",
-              "version": "[4.20.1, )"
+              "version": "[4.21.0, )"
             },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
