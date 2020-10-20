@@ -37,15 +37,15 @@ namespace SeleniumBase.Framework.Core.Services
         public static IRestResponse Get(string Uri, string endPoint, string body)
         {
             var client = new RestClient(Uri);
-            var request = new RestRequest(endPoint, Method.GET);
+            var request = new RestRequest(endPoint,DataFormat.Json);
             request.AddHeader("cache-control", "no-cache");
             request.AddHeader("Content-Type", "application/json");
+            request.AddJsonBody(body);
 
-
-            var response = client.Execute(request);
+            var response = client.Get(request);
             var content = response.Content;
             Console.WriteLine(content);
-           // Assert.AreEqual(200, response.StatusCode);
+            Assert.AreEqual(true, response.IsSuccessful);
             return response;
         }
 
