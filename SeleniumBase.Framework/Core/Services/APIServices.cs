@@ -1,7 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
 using RestSharp;
+using SeleniumBase.Framework.Core.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Web;
 using static SeleniumBase.Framework.Core.Helpers.LogHelper;
 
 
@@ -13,24 +17,22 @@ namespace SeleniumBase.Framework.Core.Services
      /// </summary>
     public static class APIServices
     {
-        public const string ApiURI = "";
-        public static IList<Info> GetAPIFunctions()
+        public static IRestResponse Post(string Uri,string endPoint,string body)
         {
-            Log.Info("Api Services");
-            var client = new RestClient(ApiURI);
-            var request = new RestRequest
-            {
-                Method = Method.GET,
-                RequestFormat = DataFormat.Json
-            };
+            var client = new RestClient(Uri);
+            var request = new RestRequest(endPoint,Method.POST);
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Content-Type","application/json");
+            request.AddJsonBody(body);
+            
+
             var response = client.Execute(request);
-
-            if (response.StatusCode != System.Net.HttpStatusCode.OK)
-            {
-                throw new Exception("info endpoints failed with " + response.StatusCode);
-            }
-
-            return JsonConvert.DeserializeObject<IList<Info>>(response.Content);
+            var content = response.Content;
+            Console.WriteLine(content);
+            Assert.AreEqual(200,response.StatusCode);
+            return response;
         }
+
+
     }
-}
+    }
