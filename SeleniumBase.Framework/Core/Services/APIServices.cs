@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RestSharp;
 using SeleniumBase.Framework.Core.Helpers;
 using System;
@@ -33,6 +34,26 @@ namespace SeleniumBase.Framework.Core.Services
             return response;
         }
 
+        public static IRestResponse Get(string Uri, string endPoint, string body)
+        {
+            var client = new RestClient(Uri);
+            var request = new RestRequest(endPoint, Method.GET);
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Content-Type", "application/json");
 
+
+            var response = client.Execute(request);
+            var content = response.Content;
+            Console.WriteLine(content);
+           // Assert.AreEqual(200, response.StatusCode);
+            return response;
+        }
+
+    }
+    public class JContent
+    { 
+        public string foo1 { get; set; }
+        public string foo2 { get; set; }
+    
     }
     }

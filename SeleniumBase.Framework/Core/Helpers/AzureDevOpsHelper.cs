@@ -1,5 +1,6 @@
 ﻿using AventStack.ExtentReports.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MongoDB.Bson;
 using Newtonsoft.Json;
 using RestSharp;
 using SeleniumBase.Framework.Core.Services;
@@ -22,11 +23,11 @@ namespace SeleniumBase.Framework.Core.Helpers
        [TestMethod]
         public void Post_New_Run()
         {
-           var body = "{" +
-                    "foo1:'" + "bar1'" +
-                    "foo2:'" + "bar2'" +
-                    "}";
-           var response =  APIServices.Post(TestUrl,TestEndPoint,body);
+            var body = new JContent();
+            body.foo1 = "bar1";
+            body.foo2 = "bar2";
+
+           var response =  APIServices.Get(TestUrl,TestEndPoint,body.ToJson());
            Console.WriteLine($"The Resposne is {response.Content}");
         }
     }
