@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
@@ -6,6 +6,34 @@
     <IsPackable>false</IsPackable>
 
     <UserSecretsId>db29549c-253b-4c5a-bf73-d5cd18ac0eef</UserSecretsId>
+
+    <Authors>Wayne Walsh</Authors>
+
+    <Company>SeleniumBase.FrameWork</Company>
+
+    <Description>Selenium Based Framework , This framew work exteneds multiple areas in the selenium class files and willhouse the base framework</Description>
+
+    <PackageTags>SeleniumBase Framework</PackageTags>
+
+    <PackageReleaseNotes>Initial release of the framework.</PackageReleaseNotes>
+
+    <NeutralLanguage>en</NeutralLanguage>
+
+    <AssemblyVersion>1.0.0.3</AssemblyVersion>
+
+    <FileVersion>1.0.0.3</FileVersion>
+
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+    <Version>1.0.0.3</Version>
+
+    <PackageLicenseExpression></PackageLicenseExpression>
+
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>true</Optimize>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,12 +43,16 @@
     <EmbeddedResource Remove="Core\Reporting\**" />
     <None Remove="Core\Configuration\**" />
     <None Remove="Core\Reporting\**" />
+    <None Include="..\..\NugetPackages\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="ExtentReports.Core" Version="1.0.3" />
-    <PackageReference Include="Microsoft.Identity.Client" Version="4.20.1" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.21.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.1.2" />
     <PackageReference Include="MSTest.TestFramework" Version="2.1.2" />

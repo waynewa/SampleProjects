@@ -26,22 +26,27 @@ namespace SeleniumBase.Framework.Core.Selenium
                 case "Firefox":
                     new DriverManager().SetUpDriver(new FirefoxConfig());
                     Driver = new FirefoxDriver();
+                    Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
                     return Driver;
                 case "Edge":
                     new DriverManager().SetUpDriver(new EdgeConfig());
                     Driver = new EdgeDriver();
+                    Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
                     return Driver;
                 case "InternetExplorer":
                     new DriverManager().SetUpDriver(new InternetExplorerConfig());
                     Driver = new InternetExplorerDriver();
+                    Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
                     return Driver;
                 case "Remote":
                     ChromeOptions Options = new WebDriverOptions().GetRemoteOptions();
                     Driver = new RemoteWebDriver(new Uri(remoteURL), Options.ToCapabilities());
+                    Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
                     return Driver;
                 case "Chrome":
                     new DriverManager().SetUpDriver(new ChromeConfig());
                     ChromeOptions options = new WebDriverOptions().GetChromeOptions();
+                    Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
                     Driver = new ChromeDriver(options);
                     return Driver;
                 default:
