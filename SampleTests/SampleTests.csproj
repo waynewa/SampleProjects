@@ -14,7 +14,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="SeleniumBase.Framework" Version="1.0.0" />
   </ItemGroup>
-
+  <ItemGroup>
+    <ProjectReference Include="..\SeleniumBase.Framework\SeleniumBase.Framework.csproj" />
+  </ItemGroup>
 </Project>

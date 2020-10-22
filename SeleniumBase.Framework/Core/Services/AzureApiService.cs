@@ -13,16 +13,16 @@ namespace SeleniumBase.Framework.Core.Services
     {
         public static string path;
         private static string body = "";
-        private static int runId;
-        private static string testRunName = "Automation TFS Run";
-        private static int testPointId;
+        private static int RunId;
+        private static string TestRunName = "Automation TFS Run";
+        private static int TestPointId;
         private static string TFS_Server_URL = "https://tfs.datacomdev.co.nz/tfs/SANDIAKL/";
-        private static string TFS_Comment = "Updated from the Automation Suite :";
+        private static string DevOps_Comment = "Updated from the Automation Suite :";
 
         public static void Post_New_Run()
         {
             int planNumber = GetActivePlanNumber();
-            testPointId = GetTestCasePoint();
+            TestPointId = GetTestCasePoint();
             var plan = new {id = planNumber };
             
 
