@@ -14,7 +14,7 @@ namespace SampleTests.Tests.Base
     {
         protected static TestContextLoader TestContextLoader;
         public TestContext TestContext { get; set; }
-        public static string DevOpsUrl { get; set; }
+        public static string TestUrl { get; set; }
         public static string BrowserType { get; set; }
         public static string GridUrl { get; set; }
         private static AventStack.ExtentReports.ExtentReports extent { get; set; }
@@ -24,7 +24,7 @@ namespace SampleTests.Tests.Base
         public static void BeforeAll(TestContext testContext)
         {
             TestContextLoader = new TestContextLoader(testContext);
-            DevOpsUrl = TestContextLoader.GetProperty("DevOpsUrl", "https://demoqa.com");
+            TestUrl = TestContextLoader.GetProperty("TestUrl", "https://demoqa.com");
             BrowserType = TestContextLoader.GetProperty("BrowserType", "Chrome");
             GridUrl = TestContextLoader.GetProperty("GridUrl", "http://127.0.0.1:4444/wd/hub");
             CreateTestResultsDirectory();
@@ -40,7 +40,7 @@ namespace SampleTests.Tests.Base
             { Driver.Init(BrowserType, GridUrl); }
             else 
             { Driver.Init(BrowserType); }
-            Driver.Goto(DevOpsUrl);
+            Driver.Goto(TestUrl);
             Thread.Sleep(3000);
             Log.Info("Test Initilization Complete");
         }

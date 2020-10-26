@@ -46,8 +46,8 @@ namespace SeleniumBase.Framework.Core.Selenium
                 case "Chrome":
                     new DriverManager().SetUpDriver(new ChromeConfig());
                     ChromeOptions options = new WebDriverOptions().GetChromeOptions();
-                    Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
                     Driver = new ChromeDriver(options);
+                    Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
                     return Driver;
                 default:
                     Assert.Fail("Unable to select valid browser");
