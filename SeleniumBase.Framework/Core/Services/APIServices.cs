@@ -1,15 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using RestSharp.Authenticators;
-using SeleniumBase.Framework.Core.Helpers;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
-using System.Web;
-using static SeleniumBase.Framework.Core.Helpers.LogHelper;
 
 
 namespace SeleniumBase.Framework.Core.Services
@@ -39,14 +34,12 @@ namespace SeleniumBase.Framework.Core.Services
 
         public static IRestResponse Get(string Uri, string endPoint, JObject body)
         {
-            
             var client = new RestClient(Uri);
             client.Authenticator = new HttpBasicAuthenticator("", PAT);
             var request = new RestRequest(endPoint, Method.GET);
             request.AddParameter("application/json", body);
             var response = client.Get(request);
-            var content = response.Content;
-            Console.WriteLine(content);
+
             Assert.AreEqual(true, response.IsSuccessful);
             Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
             return response;

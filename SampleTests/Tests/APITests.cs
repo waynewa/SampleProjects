@@ -1,10 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SeleniumBase.Framework.Core.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SeleniumBase.Framework.Core.Services;
+using System.Diagnostics;
 
 namespace SampleTests.Tests
 {
@@ -16,8 +12,8 @@ namespace SampleTests.Tests
 
         public void GetAzureRunInformation()
         {
-            //AzureDevOpsHelper.GetAllTestPlans();
-            AzureDevOpsHelper.GetActiveTestPlan();
+            AzureApiService.GetAllTestPlans();
+           //Debug.WriteLine( AzureApiService.GetActiveTestPlan());
         }
 
     }
