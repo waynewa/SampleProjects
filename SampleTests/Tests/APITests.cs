@@ -12,8 +12,8 @@ namespace SampleTests.Tests
 
         public void GetAzureRunInformation()
         {
-            AzureApiService.GetAllTestPlans();
-           //Debug.WriteLine( AzureApiService.GetActiveTestPlan());
+           // AzureApiService.GetAllTestPlans();
+           Debug.WriteLine( AzureApiService.GetActiveTestPlan());
         }
 
     }

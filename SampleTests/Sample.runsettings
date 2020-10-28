@@ -3,7 +3,7 @@
   <!-- Parameters used by tests at runtime on the New Environment -->
   <TestRunParameters>
     <Parameter name="TestUrl" value="https://demoqa.com" />
-    <Parameter name="GridUrl" value="http://127.0.0.1:4444/wd/hub" />
+    <Parameter name="GridUrl" value="http://10.219.21.90:4444/wd/hub" />
 
     <!--Browser Type has a Selection of 
     - Firefox
