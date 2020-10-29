@@ -12,8 +12,10 @@ namespace SampleTests.Tests
 
         public void GetAzureRunInformation()
         {
-           // AzureApiService.GetAllTestPlans();
-           AzureApiService.GetActiveTestPlan();
+            // AzureApiService.GetAllTestPlans();
+            // Debug.WriteLine($"The Tesplan Id is : {AzureApiService.GetTestPlanIdByName("2020 Sprints")}");
+            // AzureApiService.GetRunResults(1118580);
+            AzureApiService.GetTestPoints();
         }
 
     }

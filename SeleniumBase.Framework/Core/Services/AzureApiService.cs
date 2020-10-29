@@ -2,12 +2,9 @@
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
 
 namespace SeleniumBase.Framework.Core.Services
 {
@@ -23,18 +20,93 @@ namespace SeleniumBase.Framework.Core.Services
         private static string DevOps_Comment = "Updated from the Automation Suite :";
         private static int TestCaseId = 100683;
         private static string SuiteName = "";
-        private static int PlanNumber = 114985;
 
         public static int GetTestCasePoint { get; private set; }
 
-        public static void PostNewRun(int testCaseId, string suiteName)
-        {
-            ApiEndPoint = "_apis/test/runs/" + RunId + "/results?api-version=5.0";
 
-            //int planNumber = GetActiveTestPlan(); ///Collect info from DevOps 
+        public static void GetAllTestPlans()
+        {
+            ApiEndPoint = "/_apis/test/plans" + apicallversion;
+            JObject jBody = new JObject();
+            var TestPlans = APIServices.Get(DevOpsUrl, ApiEndPoint, jBody);
+
+            Debug.WriteLine(TestPlans.Content);
+        }
+
+        public static int? GetTestPlanIdByName(string planName)
+        {
+            try
+            {
+                string ApiEndPoint = "_apis/test/plans" + apicallversion;
+                JObject jBody = new JObject();
+                IRestResponse responseplan = APIServices.Get(DevOpsUrl, ApiEndPoint, jBody);
+
+                var planList = JObject.Parse(responseplan.Content);
+                var id = planList.Value<JArray>("value").FirstOrDefault(p => p.Value<string>("name") == planName)?.Value<int?>("id");
+                return id;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                Assert.Fail();
+                return null;
+            }
+
+        }
+
+        public static void GetRunStats(Int32 RunId)
+        {
+            ApiEndPoint = "_apis/test/runs/" + RunId + "/Statistics"+ apicallversion;
+
+            JObject jBody = new JObject();
+            IRestResponse getRun = APIServices.Get(DevOpsUrl, ApiEndPoint, jBody);
+            var runInfo = JObject.Parse(getRun.Content);
+            Debug.WriteLine(runInfo);
+
+        }
+
+        public static void GetRunResults(Int32 RunId)
+        {
+            ApiEndPoint = "_apis/test/runs/" + RunId + "/results" + apicallversion;
+
+            Debug.WriteLine(RunId.ToString());
+
+            JObject jBody = new JObject();
+            IRestResponse getRun = APIServices.Get(DevOpsUrl, ApiEndPoint, jBody);
+            var runResults = JObject.Parse(getRun.Content);
+            Debug.WriteLine(runResults);
+
+        }
+
+        public static void GetTestPoints()
+        {
+            try
+            {
+                ApiEndPoint = "/_apis/test/points" + apicallversion;
+
+                JObject jBody = new JObject();
+                IRestResponse getTestPoints = APIServices.Get(DevOpsUrl, ApiEndPoint, jBody);
+                var testPointResults = JObject.Parse(getTestPoints.Content);
+                Debug.WriteLine(testPointResults);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+
+        public static void PostNewRun(string planName, int testCaseId, string suiteName)
+        {
+            ApiEndPoint = "_apis/test/runs/" + RunId + "/results" + apicallversion;
+
+            int? planNumber = GetTestPlanIdByName(planName);
             TestPointId = GetTestCasePoint; /// Collect Data From DevOps (testCaseID, suiteName)
             JObject jPlan = new JObject();
-            jPlan.Add("id", PlanNumber);
+            jPlan.Add("id", planNumber);
             JObject jBody = new JObject();
             jBody.Add("automated", false);
             jBody.Add("name", TestRunName);
@@ -49,41 +121,10 @@ namespace SeleniumBase.Framework.Core.Services
             Console.WriteLine($"The Resposne is {response.Content}");
         }
 
-        public static string GetActiveTestPlan()
-        {
-            try
-            {
-                string ApiEndPoint = "_apis/test/plans" + apicallversion;
-                JObject jBody = new JObject();
-                IRestResponse responseplan = APIServices.Get(DevOpsUrl, ApiEndPoint, jBody);
-
-                var planList = JObject.Parse(responseplan.Content);
-                var id = planList.Value<JArray>("value").FirstOrDefault(p => p.Value<string>("name") == "2020 Sprints")?.Value<int?>("id");
-                Debug.WriteLine(id);
-                string activePlan = responseplan.Content;
-                return activePlan;
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.Message);
-                Assert.Fail();
-                return null;
-            }
-
-        }
-
-        public static void GetAllTestPlans()
-        {
-            ApiEndPoint = "/_apis/test/plans?api-version=5.0";
-            JObject jBody = new JObject();
-            var TestPlans = APIServices.Get(DevOpsUrl, ApiEndPoint, jBody);
-
-            Debug.WriteLine(TestPlans.Content);
-        }
 
         public static void PatchUpdateCompletedRun(int RunId)
         {
-            ApiEndPoint = "_apis/test/runs/" + RunId + "?api-version=5.0";
+            ApiEndPoint = "_apis/test/runs/" + RunId + ""+ apicallversion;
 
             /** Successfully creates a new run with no tests at the moment **/
             JObject jBody = new JObject();
@@ -97,7 +138,7 @@ namespace SeleniumBase.Framework.Core.Services
 
         public static void PatchUpdateCompletedTestRun(int RunId, string comment)
         {
-            ApiEndPoint = "_apis/test/runs/" + RunId + "/results?api-version=5.0";
+            ApiEndPoint = "_apis/test/runs/" + RunId + "/results"+ apicallversion;
 
             /** Successfully creates a new run with no tests at the moment **/
             JObject jBody = new JObject();
@@ -111,27 +152,7 @@ namespace SeleniumBase.Framework.Core.Services
         }
 
 
-        public static void GetRunInfo(int RunId)
-        {
-            ApiEndPoint = "_apis/test/runs/" + RunId + "/Statistics?api-version=5.0";
 
-            JObject jBody = new JObject();
-            IRestResponse getRun = APIServices.Get(DevOpsUrl, ApiEndPoint, jBody);
-            Debug.WriteLine(getRun.ToString());
-
-        }
-
-        public static void GetRunResults(int RunId)
-        {
-            ApiEndPoint = "_apis/test/runs/" + RunId + "/results?api-version=5.0";
-
-            Debug.WriteLine(RunId.ToString());
-
-            JObject jBody = new JObject();
-            IRestResponse getRun = APIServices.Get(DevOpsUrl, ApiEndPoint, jBody);
-            Debug.WriteLine(getRun.ToString());
-
-        }
 
         /******This function will Pass the test case oin the TFS server, additional availability check for the TFS server will be done*************/
 
@@ -187,36 +208,7 @@ namespace SeleniumBase.Framework.Core.Services
                 return false;
             }
         }
-        public static async void GetProjects()
-        {
-            try
-            {
-                var personalaccesstoken = "j7c5wxdbimp7ufoz5crmrtsxygaamlv7vbvkgbexwjyfokkurcfa";
-
-                using (HttpClient client = new HttpClient())
-                {
-                    client.DefaultRequestHeaders.Accept.Add(
-                        new MediaTypeWithQualityHeaderValue("application/json"));
-
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
-                        Convert.ToBase64String(
-                            System.Text.Encoding.ASCII.GetBytes(
-                                string.Format("{0}:{1}", "", personalaccesstoken))));
-
-                    using (HttpResponseMessage response = await client.GetAsync(
-                                DevOpsUrl))
-                    {
-                        response.EnsureSuccessStatusCode();
-                        string responseBody = await response.Content.ReadAsStringAsync();
-                        Debug.WriteLine($"This is the DevOps Projects: {responseBody}");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-        }
+     
     }
 
 }
