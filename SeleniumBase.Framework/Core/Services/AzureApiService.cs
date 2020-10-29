@@ -57,8 +57,9 @@ namespace SeleniumBase.Framework.Core.Services
                 JObject jBody = new JObject();
                 IRestResponse responseplan = APIServices.Get(DevOpsUrl, ApiEndPoint, jBody);
 
-                var planList = JObject.Parse(responseplan.Content).SelectToken("id").ToList();
-                Debug.WriteLine(planList);
+                var planList = JObject.Parse(responseplan.Content);
+                var id = planList.Value<JArray>("value").FirstOrDefault(p => p.Value<string>("name") == "2020 Sprints")?.Value<int?>("id");
+                Debug.WriteLine(id);
                 string activePlan = responseplan.Content;
                 return activePlan;
             }
