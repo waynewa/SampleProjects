@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using RestSharp;
 using RestSharp.Authenticators;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 
@@ -26,9 +27,10 @@ namespace SeleniumBase.Framework.Core.Services
             request.AddParameter("application/json", body);
             var response = client.Post(request);
             var content = response.Content;
-            Console.WriteLine(content);
-            Assert.AreEqual(true, response.IsSuccessful);
+            Debug.WriteLine(content.ToString());
+            
             Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
+            Assert.AreEqual(true, response.IsSuccessful);
             return response;
         }
 
@@ -40,8 +42,8 @@ namespace SeleniumBase.Framework.Core.Services
             request.AddParameter("application/json", body);
             var response = client.Get(request);
 
-            Assert.AreEqual(true, response.IsSuccessful);
             Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
+            Assert.AreEqual(true, response.IsSuccessful);
             return response;
         }
         public static IRestResponse Put(string Uri, string endPoint, JObject body)
@@ -56,6 +58,19 @@ namespace SeleniumBase.Framework.Core.Services
             Console.WriteLine(content);
             Assert.AreEqual(true, response.IsSuccessful);
             Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
+            return response;
+        }
+
+        public static IRestResponse Get<T>(string Uri, string endPoint, JObject body)
+        {
+            var client = new RestClient(Uri);
+            client.Authenticator = new HttpBasicAuthenticator("", PAT);
+            var request = new RestRequest(endPoint, Method.GET);
+            request.AddParameter("application/json", body);
+            var response = client.Get<T>(request);
+
+            Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
+            Assert.AreEqual(true, response.IsSuccessful);
             return response;
         }
 

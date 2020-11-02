@@ -18,10 +18,6 @@ namespace SeleniumBase.Framework.Core.Services
         private static string TestRunName = "Automation Test Run";
         private static int TestPointId;
         private static string DevOps_Comment = "Updated from the Automation Suite :";
-        private static int TestCaseId = 100683;
-        private static string SuiteName = "";
-
-        public static int GetTestCasePoint { get; private set; }
 
 
         public static void GetAllTestPlans()
@@ -39,9 +35,9 @@ namespace SeleniumBase.Framework.Core.Services
             {
                 string ApiEndPoint = "_apis/test/plans" + apicallversion;
                 JObject jBody = new JObject();
-                IRestResponse responseplan = APIServices.Get(DevOpsUrl, ApiEndPoint, jBody);
+                IRestResponse responsePlan = APIServices.Get(DevOpsUrl, ApiEndPoint, jBody);
 
-                var planList = JObject.Parse(responseplan.Content);
+                var planList = JObject.Parse(responsePlan.Content);
                 var id = planList.Value<JArray>("value").FirstOrDefault(p => p.Value<string>("name") == planName)?.Value<int?>("id");
                 return id;
             }
@@ -53,6 +49,45 @@ namespace SeleniumBase.Framework.Core.Services
             }
 
         }
+
+        public static int GetSuiteNumberByName(string planName,string suiteName)
+        {
+            int? planNumber = GetTestPlanIdByName(planName);
+            ApiEndPoint = "_apis/test/plans/" + planNumber + "/suites/" + apicallversion;
+            JObject jBody = new JObject();
+            IRestResponse responseSuite = APIServices.Get(DevOpsUrl, ApiEndPoint, jBody);
+            var suiteList = JObject.Parse(responseSuite.Content);
+            var id = suiteList.Value<JArray>("value").FirstOrDefault(p => p.Value<string>("name") == suiteName).Value<int>("id");
+            return id;
+
+        }
+
+        public static int GetTestCasePoint(string planName, string suiteName,int testCaseId)
+        {
+            int? planNumber = GetTestPlanIdByName(planName);
+            int? suiteNumber = GetSuiteNumberByName(planName, suiteName);
+            ApiEndPoint = "_apis/test/plans/" + planNumber + "/suites/" + suiteNumber + "/points/" + apicallversion;
+            JObject jBody = new JObject();
+            IRestResponse responsePoints = APIServices.Get(DevOpsUrl, ApiEndPoint, jBody);
+            var suitePoints = JObject.Parse(responsePoints.Content);
+            var id = suitePoints.Value<JArray>("value").Values("testCase").FirstOrDefault(p => p.Value<int>("id") == testCaseId).Value<int>("id");
+            return id;
+        }
+
+
+        public static void GetSuiteRuns(string planName, string suiteName)
+        {
+            int? planNumber = GetTestPlanIdByName(planName);
+            Debug.WriteLine(planNumber);
+            int? suiteNumber = GetSuiteNumberByName(planName, suiteName);
+            Debug.WriteLine(suiteNumber);
+            ApiEndPoint = "_apis/test/plans/" + planNumber + "/suites/" + suiteNumber +"/runs"+apicallversion;
+            JObject jBody = new JObject();
+            IRestResponse responseRun = APIServices.Get(DevOpsUrl, ApiEndPoint, jBody);
+            var suiteRuns = JObject.Parse(responseRun.Content);
+            Debug.WriteLine(suiteRuns);
+        }
+
 
         public static void GetRunStats(Int32 RunId)
         {
@@ -78,33 +113,13 @@ namespace SeleniumBase.Framework.Core.Services
 
         }
 
-        public static void GetTestPoints()
-        {
-            try
-            {
-                ApiEndPoint = "/_apis/test/points" + apicallversion;
 
-                JObject jBody = new JObject();
-                IRestResponse getTestPoints = APIServices.Get(DevOpsUrl, ApiEndPoint, jBody);
-                var testPointResults = JObject.Parse(getTestPoints.Content);
-                Debug.WriteLine(testPointResults);
-
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-        }
-
-
-        public static void PostNewRun(string planName, int testCaseId, string suiteName)
+        public static void PostNewRun(string planName, string suiteName, int testCaseId)
         {
             ApiEndPoint = "_apis/test/runs/" + RunId + "/results" + apicallversion;
 
             int? planNumber = GetTestPlanIdByName(planName);
-            TestPointId = GetTestCasePoint; /// Collect Data From DevOps (testCaseID, suiteName)
+            TestPointId = GetTestCasePoint(planName, suiteName,testCaseId);
             JObject jPlan = new JObject();
             jPlan.Add("id", planNumber);
             JObject jBody = new JObject();
