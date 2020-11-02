@@ -19,6 +19,7 @@ namespace SeleniumBase.Framework.Core.Selenium
             chromeOption.AddArguments("start-maximized");
             chromeOption.AddArguments("incognito");
             chromeOption.AddArguments("test-type");
+            chromeOption.AddArgument("no-sandbox");
             return chromeOption;
         }
 

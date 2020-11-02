@@ -12,9 +12,20 @@ namespace SampleTests.Tests
 
         public void GetAzureRunInformation()
         {
-            AzureApiService.GetAllTestPlans();
-           //Debug.WriteLine( AzureApiService.GetActiveTestPlan());
+            var list = AzurePointsService.GetListOfTestPoints("2020 Releases", "Release #3.5 - Smoke Test - Post Refresh");
+
+            foreach(int id in list)
+            {
+                Debug.WriteLine(id.ToString());
+            }
         }
 
+        [TestMethod]
+        public void GetTestPointByTestCaseID()
+        {
+
+            AzurePointsService.GetTestPointsByTestCaseId("2020 Releases", "Release #3.5 - Smoke Test - Post Refresh", 91994);
+
+        }
     }
 }
