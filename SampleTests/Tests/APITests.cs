@@ -12,7 +12,7 @@ namespace SampleTests.Tests
 
         public void GetAzureRunInformation()
         {
-            var list = AzurePointsService.GetListOfTestPoints("2020 Releases", "Release #3.5 - Smoke Test - Post Refresh");
+            var list = AzureTestPointsService.GetListOfTestPoints("2020 Releases", "Release #3.5 - Smoke Test - Post Refresh");
 
             foreach(int id in list)
             {
@@ -24,8 +24,14 @@ namespace SampleTests.Tests
         public void GetTestPointByTestCaseID()
         {
 
-            AzurePointsService.GetTestPointsByTestCaseId("2020 Releases", "Release #3.5 - Smoke Test - Post Refresh", 91994);
+           Debug.WriteLine(AzureTestPointsService.GetTestPointsByTestCaseId(91994));
 
+        }
+        [TestMethod]
+        public void PostNewRun()
+        {
+            var runid = AzureTestRunService.CreateNewTestRun("2020 Releases",91994);
+            //AzureTestRunServices.DeleteTestRun(runid);
         }
     }
 }
