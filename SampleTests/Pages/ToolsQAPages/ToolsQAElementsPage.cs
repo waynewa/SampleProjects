@@ -25,8 +25,8 @@ namespace SampleTests.Pages.ToolsQAPages
         public static IWebElement EmailInputField => Driver.FindElement(By.CssSelector("#userEmail"));
         public static IWebElement CurrentAddressTextBox => Driver.FindElement(By.CssSelector("#currentAddress"));
         public static IWebElement PermanentAddressTextBox => Driver.FindElement(By.CssSelector("#permanentAddress"));
-        
-
+        public static IWebElement CheckboxHomeDropDown => Driver.FindElement(By.XPath("//body/div[@id='app']/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/ol[1]/li[1]/span[1]/button[1]/*[1]"));
+        public static IWebElement CheckboxSelection(string checkBoxName) => Driver.FindElement(By.XPath($"//span[contains(text(),'{checkBoxName}')]"));
 
         public static void NaviageToElementMenuItem(string subMenuItem)
         {
@@ -56,6 +56,7 @@ namespace SampleTests.Pages.ToolsQAPages
                 Assert.AreEqual(Utils.ReturnTextFromElement(PermanentAddressTextBox) , permanentAddress);
 
         }
+
 
 
 
