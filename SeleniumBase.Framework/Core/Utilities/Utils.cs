@@ -60,6 +60,11 @@ namespace SeleniumBase.Framework.Core.Utils
             js.ExecuteScript("arguments[0].scrollIntoView(true);", element);
         }
 
+        /// <summary>
+        /// Returns the Text attribute value from given element
+        /// </summary>
+        /// <param name="webElement"></param>
+        /// <returns>text value</returns>
         public static string ReturnTextFromElement(IWebElement webElement)
         {
             var retrunText = webElement.GetAttribute("value");

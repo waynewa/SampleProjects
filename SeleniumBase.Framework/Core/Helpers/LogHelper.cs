@@ -62,6 +62,9 @@ namespace SeleniumBase.Framework.Core.Helpers
             }
         }
 
+        /// <summary>
+        /// Create a Object for the Logger Lock function
+        /// </summary>
         private static object _setLoggerLock = new object();
     }
 }

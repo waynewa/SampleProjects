@@ -9,8 +9,7 @@ using System.Net;
 namespace SeleniumBase.Framework.Core.Services
 {
     /// <summary>
-    /// This services Class requires some refactoring as it is only
-    /// exsample indications at the moment
+    /// This services Class is setup mainly for post request to azure DevOps
     /// </summary>
     public static class APIServices
     {

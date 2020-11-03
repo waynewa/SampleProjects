@@ -41,6 +41,7 @@ namespace SeleniumBase.Framework.Core.Selenium
             Wait = new Wait(30);
             Log.Info("Driver Initialization Complete");
         }
+        
         /// <summary>
         /// Currnet driver session utilized at the time
         /// </summary>
@@ -88,6 +89,7 @@ namespace SeleniumBase.Framework.Core.Selenium
         {
             return Current.Title;
         }
+        
         /// <summary>
         /// Waits for the current page to load with configurable wait time 
         /// </summary>
@@ -106,7 +108,6 @@ namespace SeleniumBase.Framework.Core.Selenium
             Current.Quit();
             Log.Info("Quit Driver Session");
         }
-
 
         /// <summary>
         /// WebDriver Close Session function

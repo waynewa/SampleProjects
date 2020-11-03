@@ -15,6 +15,7 @@ namespace SeleniumBase.Framework.Core.Selenium
     public class WebDriverFactory
     {
         IWebDriver Driver;
+
         /// <summary>
         /// Initilizes IWebDriver based on the given WebBrowser name.
         /// </summary>

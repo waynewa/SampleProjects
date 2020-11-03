@@ -18,7 +18,10 @@ namespace SeleniumBase.Framework.Core.Helpers
         [ThreadStatic]
         private static ExtentTest extentTest;
 
-
+        /// <summary>
+        /// Create the extent report and resturn the report to be utilized
+        /// </summary>
+        /// <returns>returns extent report</returns>
         public static AventStack.ExtentReports.ExtentReports StartReport()
         {
             string projectPath = WORKSPACE_DIRECTORY;
@@ -34,31 +37,58 @@ namespace SeleniumBase.Framework.Core.Helpers
             return extent;
         }
 
+        /// <summary>
+        /// Creates test in the extent report 
+        /// </summary>
+        /// <param name="_extent"></param>
+        /// <param name="testName"></param>
+        /// <returns>returns test</returns>
         public static ExtentTest CreateTest(AventStack.ExtentReports.ExtentReports _extent, string testName)
         {
             extentTest = _extent.CreateTest(testName);
             return extentTest;
         }
 
+
+        /// <summary>
+        /// Writes the info messages in the report
+        /// </summary>
+        /// <param name="message">string message to be written in report</param>
         public void Info(string message)
         {
             extentTest.Info(message);
         }
 
+        /// <summary>
+        /// Writes the Warning messages in the report
+        /// </summary>
+        /// <param name="message">string message to be written in report</param>
         public void Warning(string message)
         {
             extentTest.Warning(message);
         }
 
+        /// <summary>
+        /// Writes the Error messages in the report
+        /// </summary>
+        /// <param name="message">string message to be written in report</param>
         public void Error(string message)
         {
             extentTest.Error(message);
         }
 
+        /// <summary>
+        /// Writes the Fatal messages in the report
+        /// </summary>
+        /// <param name="message">string message to be written in report</param>
         public void Fatal(string message)
         {
             extentTest.Fatal(message);
         }
+
+        /// <summary>
+        /// This method will add screen shot to the report
+        /// </summary>
         public void AddScreenShots()
         {
             var mediaModel =

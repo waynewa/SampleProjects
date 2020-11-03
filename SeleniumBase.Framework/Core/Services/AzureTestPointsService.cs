@@ -1,12 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using RestSharp;
-using System;
 using System.Collections;
-using System.Collections.Immutable;
-using System.Diagnostics;
 using System.Linq;
-using System.Net;
 
 namespace SeleniumBase.Framework.Core.Services
 {
@@ -15,9 +10,14 @@ namespace SeleniumBase.Framework.Core.Services
 
         private static string DevOpsUrl = "https://rymanhealthcare.visualstudio.com/MyRyman%20Development";
         private static string ApiEndPoint;
-        private static string ApiCallVersion = "?api-version=5.0";
+        private static string ApiCallVersion = "?api-version=6.0";
 
-
+        /// <summary>
+        /// Gets alist of the test case point in the test suite
+        /// </summary>
+        /// <param name="planName"></param>
+        /// <param name="suiteName"></param>
+        /// <returns>List of points</returns>
         public static IList GetListOfTestPoints(string planName, string suiteName)
         {
             int? planNumber = AzureTestPlanService.GetTestPlanIdByName(planName);
@@ -34,7 +34,7 @@ namespace SeleniumBase.Framework.Core.Services
         /// Get the TestPoints liked to specified test case Id 
         /// </summary>
         /// <param name="testCaseId">DevOps test case number</param>
-        /// <returns></returns>
+        /// <returns>Last Test point in list</returns>
         public static int GetTestPointsByTestCaseId(int testCaseId)
         {
             JArray IDS = new JArray()

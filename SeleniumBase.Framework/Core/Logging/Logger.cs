@@ -14,6 +14,7 @@ namespace SeleniumBase.Framework.Core.Logging
 
         //Define variable for file path 
         private readonly string _filePath;
+
         /// <summary>
         /// Logger function setup to create log file 
         /// </summary>
@@ -65,6 +66,7 @@ namespace SeleniumBase.Framework.Core.Logging
             WriteLine($"[INFO]: {message}");
             ExtentTest.Info($"[INFO]: {message}");
         }
+
         /// <summary>
         /// Logging with prefix of Step
         /// </summary>
@@ -74,12 +76,21 @@ namespace SeleniumBase.Framework.Core.Logging
             WriteLine($"     [STEP]: {message}");
             ExtentTest.Info($"     [STEP]: {message}");
         }
+
+        /// <summary>
+        /// Logging with prefix of Warning
+        /// </summary>
+        /// <param name="message">Text to be written</param>
         public new void Warning(string message)
         {
             WriteLine($"[WARNING]: {message}");
             ExtentTest.Warning($"[WARNING]: {message}");
         }
 
+        /// <summary>
+        /// Logging with prefix of Pass
+        /// </summary>
+        /// <param name="message">Text to be written</param>
         public void Pass(string message)
         {
             WriteLine($"[PASS]: {message}");

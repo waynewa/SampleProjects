@@ -18,9 +18,11 @@ namespace SeleniumBase.Framework.Core.Services
     {
         private static string DevOpsUrl = "https://rymanhealthcare.visualstudio.com/MyRyman%20Development";
         private static string ApiEndPoint;
-        private static string ApiCallVersion = "?api-version=6.0A";
-        private static string DevOps_Comment = "Updated from the Automation Suite :";
+        private static string ApiCallVersion = "?api-version=6.0";
 
+        /// <summary>
+        /// Gets all test planes in the DevOps project
+        /// </summary>
         public static void GetAllTestPlans()
         {
             ApiEndPoint = "/_apis/test/plans" + ApiCallVersion;
@@ -30,6 +32,11 @@ namespace SeleniumBase.Framework.Core.Services
             Debug.WriteLine(TestPlans.Content);
         }
 
+        /// <summary>
+        /// Gets test plan id by Name of the test plan
+        /// </summary>
+        /// <param name="planName"></param>
+        /// <returns>test plan Id</returns>
         public static int? GetTestPlanIdByName(string planName)
         {
             try

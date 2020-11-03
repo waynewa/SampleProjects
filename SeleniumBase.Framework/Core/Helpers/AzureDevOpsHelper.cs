@@ -8,6 +8,10 @@ namespace SeleniumBase.Framework.Core.Helpers
         public static string path;
         private static int TestPointId;
 
+        /// <summary>
+        /// Currently stil busy developing this class features
+        /// </summary>
+
         public static void Post_New_Run()
         {
             int planNumber = GetActivePlanNumber();

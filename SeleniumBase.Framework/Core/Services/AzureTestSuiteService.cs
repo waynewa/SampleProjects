@@ -1,10 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using RestSharp;
-using System;
 using System.Diagnostics;
 using System.Linq;
-using System.Net;
 
 namespace SeleniumBase.Framework.Core.Services
 {

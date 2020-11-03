@@ -9,8 +9,12 @@ namespace SeleniumBase.Framework.Core.Services
         private static string DevOpsUrl = "https://rymanhealthcare.visualstudio.com/MyRyman%20Development";
         private static string DevOps_Comment = "Updated from the Automation Suite :";
 
-        /******This function will Pass the test case oin the TFS server, additional availability check for the TFS server will be done*************/
-
+        /// <summary>
+        /// This function will Pass the test case in the DevOps server
+        /// , additional availability check for the DevOps server will be done
+        /// </summary>
+        /// <param name="testCaseId">id of DevOps testcase</param>
+        /// <param name="suiteName">Name of suite where test case is located</param>
         public static void UpdateDevOpsPerTestCasePassed(int testCaseId, string suiteName)
         {
             if (CheckUrl() == true && Boolean.Parse("true"))
@@ -25,12 +29,13 @@ namespace SeleniumBase.Framework.Core.Services
 
         }
 
-        private static void PostTestResultsNewRun(int testCaseId, string v, string suiteName, string DevOps_Comment)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static void UpdateDevOpsPerTestCaseFailed(int testCaseId, String suiteName)
+        /// <summary>
+        /// This function will Fail the test case in the DevOps server
+        /// , additional availability check for the DevOps server will be done
+        /// </summary>
+        /// <param name="testCaseId"></param>
+        /// <param name="suiteName"></param>
+        public static void UpdateDevOpsPerTestCaseFailed(int testCaseId, string suiteName)
         {
             if (CheckUrl() == true && Boolean.Parse("true"))
             {
@@ -43,6 +48,23 @@ namespace SeleniumBase.Framework.Core.Services
             }
         }
 
+
+        /// <summary>
+        /// This will create new Run and post results to the test cases in the run 
+        /// </summary>
+        /// <param name="testCaseId"></param>
+        /// <param name="planName"></param>
+        /// <param name="suiteName"></param>
+        /// <param name="DevOps_Comment"></param>
+        private static void PostTestResultsNewRun(int testCaseId, string planName, string suiteName, string DevOps_Comment)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// This will check if the DevOps server URL is available and the return boolean value
+        /// </summary>
+        /// <returns>boolean value</returns>
         public static Boolean CheckUrl()
         {
             try
