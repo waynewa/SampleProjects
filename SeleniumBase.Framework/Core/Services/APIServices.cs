@@ -68,6 +68,7 @@ namespace SeleniumBase.Framework.Core.Services
             client.Authenticator = new HttpBasicAuthenticator("", PAT);
             var request = new RestRequest(endPoint, Method.PUT);
             Debug.WriteLine(body.ToString());
+            request.AddHeader("Content-Type", "application/json");
             request.AddParameter("application/json", body);
             var response = client.Put(request);
 
@@ -92,7 +93,7 @@ namespace SeleniumBase.Framework.Core.Services
             request.AddHeader("Content-Type", "application/json");
             request.AddParameter("application/json", body, ParameterType.RequestBody);
             var response = client.Patch(request);
-            Debug.WriteLine(response.Content);
+
             Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
             Assert.AreEqual(true, response.IsSuccessful);
             return response;
