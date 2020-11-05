@@ -19,6 +19,7 @@ namespace SeleniumBase.Framework.Core.Utils
         /// <param name="value">The value of the text to enter</param>
         public static void SendKeys(IWebElement element, string value)
         {
+            element.Clear();
             element.SendKeys(value);
             Log.Step($"Entered the {value} into the search box");
         }

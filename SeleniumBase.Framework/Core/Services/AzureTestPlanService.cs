@@ -25,7 +25,7 @@ namespace SeleniumBase.Framework.Core.Services
         /// </summary>
         public static void GetAllTestPlans()
         {
-            ApiEndPoint = "/_apis/test/plans" + ApiCallVersion;
+            ApiEndPoint = "_apis/testplan/plans" + ApiCallVersion;
             JObject jBody = new JObject();
             var TestPlans = APIServices.Get(DevOpsUrl, ApiEndPoint, jBody);
 
@@ -41,10 +41,10 @@ namespace SeleniumBase.Framework.Core.Services
         {
             try
             {
-                string ApiEndPoint = "_apis/test/plans" + ApiCallVersion;
+                string ApiEndPoint = "/_apis/testplan/plans" + ApiCallVersion+ "-preview.1";
                 JObject jBody = new JObject();
                 IRestResponse responsePlan = APIServices.Get(DevOpsUrl, ApiEndPoint, jBody);
-
+                //Debug.WriteLine(responsePlan.Content);
                 var planList = JObject.Parse(responsePlan.Content);
                 var id = planList.Value<JArray>("value").FirstOrDefault(p => p.Value<string>("name") == planName)?.Value<int?>("id");
                 return id;

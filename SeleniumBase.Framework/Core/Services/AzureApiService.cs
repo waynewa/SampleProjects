@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using RestSharp;
+using System;
 using System.Diagnostics;
 using System.Net;
 
@@ -8,23 +10,24 @@ namespace SeleniumBase.Framework.Core.Services
     {
         private static string DevOpsUrl = "https://rymanhealthcare.visualstudio.com/MyRyman%20Development";
         private static string DevOps_Comment = "Updated from the Automation Suite :";
-
+        private static string ApiEndPoint;
+        private static string ApiCallVersion = "?api-version=6.0";
         /// <summary>
         /// This function will Pass the test case in the DevOps server
         /// , additional availability check for the DevOps server will be done
         /// </summary>
         /// <param name="testCaseId">id of DevOps testcase</param>
         /// <param name="suiteName">Name of suite where test case is located</param>
-        public static void UpdateDevOpsPerTestCasePassed(int testCaseId, string suiteName)
+        public static void UpdateDevOpsPerTestCasePassed(int testCaseId,string planName , string suiteName)
         {
             if (CheckUrl() == true && Boolean.Parse("true"))
             {
-                Debug.WriteLine("TFS Server is available");
-                PostTestResultsNewRun(testCaseId, "Passed", suiteName, DevOps_Comment);
+                Debug.WriteLine("DevOps Server is available");
+                PostTestResultsNewRun(testCaseId, "Passed", planName,suiteName);
             }
             else
             {
-                Debug.WriteLine("*************************TFS Server is not available, no TFS Updates will be done*************************************");
+                Debug.WriteLine("*************************DevOps Server is not available, no DevOps Updates will be done*************************************");
             }
 
         }
@@ -35,16 +38,16 @@ namespace SeleniumBase.Framework.Core.Services
         /// </summary>
         /// <param name="testCaseId"></param>
         /// <param name="suiteName"></param>
-        public static void UpdateDevOpsPerTestCaseFailed(int testCaseId, string suiteName)
+        public static void UpdateDevOpsPerTestCaseFailed(int testCaseId, string planName, string suiteName)
         {
             if (CheckUrl() == true && Boolean.Parse("true"))
             {
                 Debug.WriteLine("TFS Server is available");
-                PostTestResultsNewRun(testCaseId, "Failed", suiteName, DevOps_Comment);
+                PostTestResultsNewRun(testCaseId, "Failed", planName, suiteName);
             }
             else
             {
-                Debug.WriteLine("*************************TFS Server is not available, no TFS Updates will be done*************************************");
+                Debug.WriteLine("*************************DevOps Server is not available, no TFS Updates will be done*************************************");
             }
         }
 
@@ -56,9 +59,20 @@ namespace SeleniumBase.Framework.Core.Services
         /// <param name="planName"></param>
         /// <param name="suiteName"></param>
         /// <param name="DevOps_Comment"></param>
-        private static void PostTestResultsNewRun(int testCaseId, string planName, string suiteName, string DevOps_Comment)
+        public static void PostTestResultsNewRun(int testCaseId,string outcome, string planName, string suiteName)
         {
-            throw new NotImplementedException();
+            int? planId = AzureTestPlanService.GetTestPlanIdByName(planName);
+            int? suiteId = AzureTestSuiteService.GetSuiteNumberByName(planName,suiteName);
+            int testPointId = AzureTestPointsService.GetTestPointsByTestCaseId(testCaseId);
+            JObject testerName = new JObject();
+            testerName.Add("displayName", "Wayne Walsh");
+            JObject jBody = new JObject();
+            jBody.Add("outcome", outcome);
+            jBody.Add("tester", testerName);
+            
+            ApiEndPoint = $"_apis/test/Plans/{planId}/Suites/{suiteId}/points/{testPointId}{ApiCallVersion}";
+            IRestResponse restResponse = APIServices.Patch(DevOpsUrl, ApiEndPoint, jBody);
+
         }
 
         /// <summary>

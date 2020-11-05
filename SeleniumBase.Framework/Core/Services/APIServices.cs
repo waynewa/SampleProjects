@@ -50,7 +50,6 @@ namespace SeleniumBase.Framework.Core.Services
             var request = new RestRequest(endPoint, Method.GET);
             request.AddParameter("application/json", body);
             var response = client.Get(request);
-
             Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
             Assert.AreEqual(true, response.IsSuccessful);
             return response;
@@ -90,11 +89,12 @@ namespace SeleniumBase.Framework.Core.Services
             client.Authenticator = new HttpBasicAuthenticator("", PAT);
             var request = new RestRequest(endPoint, Method.PATCH);
             Debug.WriteLine(body.ToString());
-            request.AddParameter("application/json", body);
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("application/json", body, ParameterType.RequestBody);
             var response = client.Patch(request);
-
-            Assert.AreEqual(true, response.IsSuccessful);
+            Debug.WriteLine(response.Content);
             Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
+            Assert.AreEqual(true, response.IsSuccessful);
             return response;
         }
 

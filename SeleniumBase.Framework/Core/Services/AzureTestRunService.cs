@@ -23,7 +23,7 @@ namespace SeleniumBase.Framework.Core.Services
         {
             int? planNumber  = AzureTestPlanService.GetTestPlanIdByName(planName);
             int? pointIds = AzureTestPointsService.GetTestPointsByTestCaseId(testCaseNumber);
-            ApiEndPoint = "_apis/test/runs" + ApiCallVersion;
+            ApiEndPoint = "/_apis/test/runs" + ApiCallVersion;
             JArray PIds = new JArray()
             {
                 pointIds
@@ -37,7 +37,7 @@ namespace SeleniumBase.Framework.Core.Services
             jBody.Add("comments", "This is a Test Case");
             jBody.Add("completedDate", DateTime.Now);
             jBody.Add("pointsIds", PIds);
-            jBody.Add("runTimeout", 600);
+            jBody.Add("runTimeout", "600");
             jBody.Add("state", "InProgress");
 
             IRestResponse responseRun = APIServices.Post(DevOpsUrl, ApiEndPoint, jBody);
@@ -82,13 +82,12 @@ namespace SeleniumBase.Framework.Core.Services
         /// <param name="comment">Text comment for run</param>
         public static void PatchUpdateCompletedTestRun(int runId, string comment)
         {
-            ApiEndPoint = "_apis/test/runs/" + runId + "/results" + ApiCallVersion;
+            ApiEndPoint = $"_apis/test/runs/{runId}" + ApiCallVersion;
 
             /** Successfully creates a new run with no tests at the moment **/
             JObject jBody = new JObject();
-            jBody.Add("id", 100000);
             jBody.Add("state", "Completed");
-            jBody.Add("completedDate", DateTime.Now);
+            //jBody.Add("completedDate", DateTime.Now);
             jBody.Add("comment", comment);
 
             var response = APIServices.Patch(DevOpsUrl, ApiEndPoint, jBody);
