@@ -1,9 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
-using RestSharp;
-using SeleniumBase.Framework.Core.Services;
-using System;
-using System.Diagnostics;
+using SeleniumBase.Framework.Core.Helpers;
 
 namespace SampleTests.Tests
 {
@@ -14,12 +10,12 @@ namespace SampleTests.Tests
         [TestMethod]
         public void PassTest()
         {
-            AzureApiService.UpdateDevOpsPerTestCasePassed(114360,"2020 Releases","3.1 - DVT");
+            AzureDevOpsHelper.PostTestResults(114360,"Passed","2020 Releases","3.1 - DVT");
         }
         [TestMethod]
         public void FailTest()
         {
-            AzureApiService.UpdateDevOpsPerTestCaseFailed(114360, "2020 Releases", "3.1 - DVT");
+            AzureDevOpsHelper.PostTestResults(114360,"Failed", "2020 Releases", "3.1 - DVT");
         }
     }
 }
