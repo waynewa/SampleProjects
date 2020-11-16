@@ -1,10 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SampleAPITests.Tests.Base;
 using SeleniumBase.Framework.Core.Helpers;
 
-namespace SampleTests.Tests
+namespace SampleAPITests.Tests
 {
     [TestClass]
-    public class APITests
+    public class APITests : BaseAPITest
     {
 
         [TestMethod]

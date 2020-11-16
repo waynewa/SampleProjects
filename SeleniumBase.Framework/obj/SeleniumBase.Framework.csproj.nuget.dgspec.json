@@ -62,7 +62,7 @@
             },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[16.7.1, )"
+              "version": "[16.8.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",

@@ -18,3 +18,5 @@ SeleniumBase.Framework/bin/Debug/net48
 SeleniumBase.Framework/obj/Debug/net48
 SeleniumBase.Framework/obj/project.nuget.cache
 SeleniumBase.Framework/obj/project.assets.json
+/SampleAPITests/bin/Debug/net48
+/SampleAPITests/obj
