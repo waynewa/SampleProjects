@@ -17,7 +17,7 @@ namespace SeleniumBase.Framework.Core.Selenium
             ChromeOptions chromeOption = new ChromeOptions();
             chromeOption.AddArguments("disable-extensions");
             chromeOption.AddArguments("start-maximized");
-            chromeOption.AddArguments("incognito");
+            //chromeOption.AddArguments("incognito");
             chromeOption.AddArguments("test-type");
             chromeOption.AddArgument("no-sandbox");
             return chromeOption;

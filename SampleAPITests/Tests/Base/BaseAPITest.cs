@@ -5,6 +5,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading;
 using AventStack.ExtentReports;
+using SeleniumBase.Framework.Core.Services;
+using SeleniumBase.Framework.Core.Helpers;
 
 namespace SampleAPITests.Tests.Base
 {
@@ -16,6 +18,7 @@ namespace SampleAPITests.Tests.Base
         public static string BrowserType { get; set; }
         private static AventStack.ExtentReports.ExtentReports extent { get; set; }
         public static ExtentTest extentTest { get; set; }
+        public static string AccessToken { get; set; }
 
         [AssemblyInitialize]
         public static void BeforeAll(TestContext testContext)
@@ -24,6 +27,7 @@ namespace SampleAPITests.Tests.Base
             BrowserType = TestContextLoader.GetProperty("BrowserType", "Chrome");
             CreateTestResultsDirectory();
             extent = StartReport();
+            
         }
 
         [TestInitialize]
@@ -31,8 +35,7 @@ namespace SampleAPITests.Tests.Base
         {
             extentTest = CreateTest(extent,TestContext.TestName);
             SetLogger(TestContext.TestName);
-            Driver.Init(BrowserType); 
-            Thread.Sleep(3000);
+            AccessToken = MicrosoftLoginHelper.MicrosoftLoginGetAPICode();
             Log.Info("Test Initilization Complete");
         }
 
@@ -41,8 +44,6 @@ namespace SampleAPITests.Tests.Base
         {
             try
             {
-
-                
                 Driver.Quit();
                 Log.Pass(TestContext.TestName);
             }
