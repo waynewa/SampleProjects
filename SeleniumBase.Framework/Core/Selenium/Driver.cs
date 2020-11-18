@@ -101,6 +101,14 @@ namespace SeleniumBase.Framework.Core.Selenium
         }
 
         /// <summary>
+        /// Waits for the current page to load with configurable wait time 
+        /// </summary>
+        /// <param name="pageWaitTime">Interger wait time in seconds</param>
+        public static void WaitForPageLoadnoLog(int pageWaitTime)
+        {
+            Current.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(pageWaitTime);
+        }
+        /// <summary>
         /// WebDriver Quit function
         /// </summary>
         public static void Quit()

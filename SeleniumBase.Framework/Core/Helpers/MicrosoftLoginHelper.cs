@@ -48,7 +48,7 @@ namespace SeleniumBase.Framework.Core.Helpers
                     {
                         if (MicrosoftUserPasswordInput.Displayed)
                         {
-                            Utils.Utils.SendKeys(MicrosoftUserPasswordInput, "mistyview32!");
+                            Utils.Utils.SendKeys(MicrosoftUserPasswordInput, "mistyview33!");
                             Utils.Utils.ClickOnElement(MicrosoftTileNextButton, "NextButton");
                         }
                     }
@@ -68,7 +68,7 @@ namespace SeleniumBase.Framework.Core.Helpers
                     {
                         if (MicrosoftUserPasswordInput.Displayed)
                         {
-                            Utils.Utils.SendKeys(MicrosoftUserPasswordInput, "mistyview32!");
+                            Utils.Utils.SendKeys(MicrosoftUserPasswordInput, "mistyview33!");
                             Utils.Utils.ClickOnElement(MicrosoftTileNextButton, "NextButton");
                         }
                     }
