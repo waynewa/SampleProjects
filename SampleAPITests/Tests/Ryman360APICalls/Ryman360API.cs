@@ -1,7 +1,12 @@
 ﻿using Newtonsoft.Json.Linq;
 using SeleniumBase.Framework.Core.Services;
 using System.Diagnostics;
+using System.Linq;
 using System.Net;
+using PageInformation;
+using OpenQA.Selenium.Remote;
+using RestSharp;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SampleAPITests.Tests.Ryman360APICalls
 {
@@ -22,12 +27,15 @@ namespace SampleAPITests.Tests.Ryman360APICalls
 
         public static void GetPagesListTree(string AccessToken,bool includeDeleted)
         {
-            PageRef pageRef = new PageRef();
+            
             string ryman360EndPoint = $"/api/management/pages:listTree?includeDeleted={includeDeleted}";
             var response = GenericAPICalls.Get(Ryman360Url + ryman360EndPoint, AccessToken,HttpStatusCode.OK);
-            Root pageInformation = Newtonsoft.Json.JsonConvert.DeserializeObject<Root>(response.Content);
-            var oidNumber = pageRef.oid = pageInformation.root.children[0].children[0].pageRef.oid;
-            Debug.WriteLine(oidNumber);
+            var PageInfo = PageInformation.PageInfo.FromJson(response.Content);
+            var pageList = PageInfo.Root.Children[0].Children.ToList();
+            foreach (var pageObject in pageList)
+            {
+                Debug.WriteLine(pageObject.PageRef.Oid.ToString());
+            }
         }
 
 
@@ -49,14 +57,27 @@ namespace SampleAPITests.Tests.Ryman360APICalls
             var newPageResponse = GenericAPICalls.Post(Ryman360Url + ryman360EndPoint, AccessToken, bodyContent, HttpStatusCode.Created);
             JObject pageInfo = JObject.Parse(newPageResponse.Content);
             string oid = pageInfo.GetValue("oid").ToString();
+            Assert.IsTrue(projectName == pageInfo.GetValue("projectName").ToString());
             Debug.WriteLine(oid);
             return oid;
         }
-        public static void GetManagementPageByID(string AccessToken, string pageId )
+        public static string GetManagementPageByID(string AccessToken, string pageId ,HttpStatusCode httpStatusCode)
         {
             string ryman360EndPoint = $"/api/management/pages/{pageId}";
-            var pageDetails = GenericAPICalls.Get(Ryman360Url + ryman360EndPoint, AccessToken,HttpStatusCode.OK);
-            Debug.WriteLine(pageDetails.Content);
+            var pageDetails = GenericAPICalls.Get(Ryman360Url + ryman360EndPoint, AccessToken,httpStatusCode);
+            try
+            {
+                Assert.IsTrue(pageDetails.Content.Contains(pageId),"No Page Id Found");
+            }
+            catch (AssertFailedException a)
+            {
+                Debug.WriteLine($"No Page Id Found, Error : {a.Message}");
+            }
+            JObject pageInfo = JObject.Parse(pageDetails.Content);
+            string etag = pageInfo.GetValue("etag").ToString();
+            //Debug.WriteLine(pageDetails.Content);
+            return etag;
+
         }
 
         public static void DeleteManagementPageById(string AccessToken, string pageId)

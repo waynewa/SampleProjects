@@ -18,7 +18,7 @@ namespace SeleniumBase.Framework.Core.Services
             request.AddHeader("Content-Type", "application/json");
             request.AddHeader("Authorization", $"Bearer {Token}");
             var response = client.Get(request);
-            Assert.AreEqual(response.StatusCode, httpStatusCode);
+            Assert.AreEqual(httpStatusCode, response.StatusCode);
             Assert.AreEqual(true, response.IsSuccessful);
             return response;
 
