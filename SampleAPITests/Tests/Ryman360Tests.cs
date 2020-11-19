@@ -1,6 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Remote;
-using RestSharp;
 using SampleAPITests.Tests.Base;
 using SampleAPITests.Tests.Ryman360APICalls;
 using System;
@@ -14,8 +12,7 @@ namespace SampleAPITests.Tests
     public class Ryman360Tests : BaseAPITest
     {
 
-        public static string PageId = "X7Mnk5s3uQbwxmXx";
-                                    //X7MoNps3uQbwxmXy
+        public static string PageId; //"X7MoNps3uQbwxmXy";
                                     //X7MpB5s3uQbwxmXz
                                     //X7Mq35s3uQbwxmX0
                                     //X7M1a5s3uQbwxmX1
@@ -40,7 +37,7 @@ namespace SampleAPITests.Tests
             PageId = Ryman360API.PostNewManagementPage(AccessToken, $"Automating Ryman360{RandomNumber(10, 999)}");
             Ryman360API.GetManagementPageByID(AccessToken, PageId, HttpStatusCode.OK);
             Ryman360API.SoftDeleteManagementPageById(AccessToken, PageId);
-            Ryman360API.GetManagementPageByID(AccessToken, PageId, HttpStatusCode.OK);
+            Ryman360API.GetManagementPageByID(AccessToken, PageId, HttpStatusCode.NotFound);
             Ryman360API.UnDeleteManagementPageById(AccessToken, PageId);
             Ryman360API.GetManagementPageByID(AccessToken, PageId, HttpStatusCode.OK);
             Ryman360API.DeleteManagementPageById(AccessToken, PageId);
@@ -64,7 +61,7 @@ namespace SampleAPITests.Tests
         [TestMethod]
         public void GetManagementPageById()
         {
-           string etag = Ryman360API.GetManagementPageByID(AccessToken, PageId,HttpStatusCode.NotFound);
+           string etag = Ryman360API.GetManagementPageByID(AccessToken, PageId,HttpStatusCode.OK);
            Debug.WriteLine($"The e-Tag for this page is : {etag}");
         }
 

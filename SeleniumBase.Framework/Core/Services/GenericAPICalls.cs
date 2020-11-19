@@ -1,10 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 using RestSharp;
-using RestSharp.Authenticators;
-using System.Diagnostics;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace SeleniumBase.Framework.Core.Services
 {
@@ -19,7 +16,14 @@ namespace SeleniumBase.Framework.Core.Services
             request.AddHeader("Authorization", $"Bearer {Token}");
             var response = client.Get(request);
             Assert.AreEqual(httpStatusCode, response.StatusCode);
-            Assert.AreEqual(true, response.IsSuccessful);
+            if (httpStatusCode == HttpStatusCode.OK)
+            {
+                Assert.AreEqual(true, response.IsSuccessful);
+            }
+            else 
+            {
+                Assert.AreEqual(false, response.IsSuccessful);
+            }
             return response;
 
         }
