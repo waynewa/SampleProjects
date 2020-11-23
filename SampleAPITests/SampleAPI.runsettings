@@ -12,6 +12,10 @@
     -->
 
     <Parameter name="BrowserType" value="Chrome" />
-
+    <Parameter name="PAT" value="j7c5wxdbimp7ufoz5crmrtsxygaamlv7vbvkgbexwjyfokkurcfa"/>
+    <Parameter name="ServerUrl" value="https://rymanhealthcare.visualstudio.com/"/>
+    <Parameter name="ProjectName" value="MyRyman%20Development"/>
+    <Parameter name="TestRunName" value="Selenium Automation Test Run"/>
+    <Parameter name="ApiCallVersion" value="?api-version=6.0"/>
   </TestRunParameters>
 </RunSettings>

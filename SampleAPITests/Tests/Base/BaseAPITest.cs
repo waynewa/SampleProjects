@@ -19,12 +19,23 @@ namespace SampleAPITests.Tests.Base
         private static AventStack.ExtentReports.ExtentReports extent { get; set; }
         public static ExtentTest extentTest { get; set; }
         public static string AccessToken { get; set; }
+        public static string PAT { get; set; }
+        public static string ServerUrl { get; set; }
+        public static string ProjectName { get; set; }
+        public static string ApiCallVersion { get; set; }
+        public static string TestRunName { get; set; }
+        public static string ApiEndPoint { get; set; }
 
         [AssemblyInitialize]
         public static void BeforeAll(TestContext testContext)
         {
             TestContextLoader = new TestContextLoader(testContext);
             BrowserType = TestContextLoader.GetProperty("BrowserType", "Chrome");
+            PAT = TestContextLoader.GetProperty("PAT", "SamplePAT$%^&*()");
+            ServerUrl = TestContextLoader.GetProperty("ServerUrl", "Https://SampleURL.com");
+            ProjectName = TestContextLoader.GetProperty("ProjectName", "Sample Poject Name");
+            ApiCallVersion = TestContextLoader.GetProperty("ApiCallVersion", "?api-version=6.0");
+            TestRunName = TestContextLoader.GetProperty("TestRunName", "SampleTestName_99999");
             CreateTestResultsDirectory();
             extent = StartReport();
             

@@ -12,6 +12,29 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Content Include="$(NuGetPackageRoot)azureapitestcaseupdate\1.0.0\contentFiles\any\net48\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll" Condition="Exists('$(NuGetPackageRoot)azureapitestcaseupdate\1.0.0\contentFiles\any\net48\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll')">
+      <NuGetPackageId>AzureAPITestCaseUpdate</NuGetPackageId>
+      <NuGetPackageVersion>1.0.0</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <Private>False</Private>
+      <Link>Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll</Link>
+    </Content>
+    <Content Include="$(NuGetPackageRoot)azureapitestcaseupdate\1.0.0\contentFiles\any\net48\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll" Condition="Exists('$(NuGetPackageRoot)azureapitestcaseupdate\1.0.0\contentFiles\any\net48\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll')">
+      <NuGetPackageId>AzureAPITestCaseUpdate</NuGetPackageId>
+      <NuGetPackageVersion>1.0.0</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <Private>False</Private>
+      <Link>Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll</Link>
+    </Content>
+    <Content Include="$(NuGetPackageRoot)azureapitestcaseupdate\1.0.0\contentFiles\any\net48\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll" Condition="Exists('$(NuGetPackageRoot)azureapitestcaseupdate\1.0.0\contentFiles\any\net48\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll')">
+      <NuGetPackageId>AzureAPITestCaseUpdate</NuGetPackageId>
+      <NuGetPackageVersion>1.0.0</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <Private>False</Private>
+      <Link>Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll</Link>
+    </Content>
+  </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)mstest.testadapter\2.1.2\build\net45\MSTest.TestAdapter.props" Condition="Exists('$(NuGetPackageRoot)mstest.testadapter\2.1.2\build\net45\MSTest.TestAdapter.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.codecoverage\16.8.0\build\netstandard1.0\Microsoft.CodeCoverage.props" Condition="Exists('$(NuGetPackageRoot)microsoft.codecoverage\16.8.0\build\netstandard1.0\Microsoft.CodeCoverage.props')" />

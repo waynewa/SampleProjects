@@ -1,6 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using AzureAPITestCaseUpdate.AzureAPIServices.AzureTestCaseUpdateService;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SampleAPITests.Tests.Base;
-using SeleniumBase.Framework.Core.Helpers;
 
 namespace SampleAPITests.Tests
 {
@@ -11,12 +11,28 @@ namespace SampleAPITests.Tests
         [TestMethod]
         public void PassTest()
         {
-            AzureDevOpsHelper.PostTestResults(114360,"Passed","2020 Releases","3.1 - DVT");
+            AzureUpdateTestCase.PostTestResults(
+             PAT,
+             ServerUrl,
+             ProjectName,
+             "myRyman - Master",
+            "101659 - Progress notes race condition",
+            101743,
+            "Jun Fernandez",
+            "Passed", ApiCallVersion);
         }
         [TestMethod]
         public void FailTest()
         {
-            AzureDevOpsHelper.PostTestResults(114360,"Failed", "2020 Releases", "3.1 - DVT");
+            AzureUpdateTestCase.PostTestResults(
+             PAT,
+             ServerUrl,
+             ProjectName,
+             "myRyman - Master",
+            "101659 - Progress notes race condition",
+             101743,
+            "Jun Fernandez",
+            "Failed", ApiCallVersion);
         }
     }
 }

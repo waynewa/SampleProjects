@@ -40,6 +40,10 @@
       "frameworks": {
         "net48": {
           "dependencies": {
+            "AzureAPITestCaseUpdate": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "DotNetSeleniumExtras.WaitHelpers": {
               "target": "Package",
               "version": "[3.11.0, )"
