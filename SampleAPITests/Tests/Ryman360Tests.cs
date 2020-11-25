@@ -12,11 +12,7 @@ namespace SampleAPITests.Tests
     public class Ryman360Tests : BaseAPITest
     {
 
-        public static string PageId; //"X7MoNps3uQbwxmXy";
-                                    //X7MpB5s3uQbwxmXz
-                                    //X7Mq35s3uQbwxmX0
-                                    //X7M1a5s3uQbwxmX1
-                                    //X7M2Yps3uQbwxmX2            
+        public static string PageId;          
 
         /// <summary>
         /// Gets a list of published pages
