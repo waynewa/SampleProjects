@@ -12,9 +12,9 @@
     -->
 
     <Parameter name="BrowserType" value="Chrome" />
-    <Parameter name="PAT" value="j7c5wxdbimp7ufoz5crmrtsxygaamlv7vbvkgbexwjyfokkurcfa"/>
+    <Parameter name="PAT" value="Sample Access Token from DevOPs"/>
     <Parameter name="ServerUrl" value="https://rymanhealthcare.visualstudio.com/"/>
-    <Parameter name="ProjectName" value="MyRyman%20Development"/>
+    <Parameter name="ProjectName" value="Sample Project Name"/>
     <Parameter name="TestRunName" value="Selenium Automation Test Run"/>
     <Parameter name="ApiCallVersion" value="?api-version=6.0"/>
   </TestRunParameters>

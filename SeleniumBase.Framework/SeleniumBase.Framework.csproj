@@ -43,14 +43,9 @@
     <EmbeddedResource Remove="Core\Reporting\**" />
     <None Remove="Core\Configuration\**" />
     <None Remove="Core\Reporting\**" />
-    <None Include="..\..\NugetPackages\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AzureAPITestCaseUpdate" Version="1.0.0" />
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="ExtentReports.Core" Version="1.0.3" />
     <PackageReference Include="Microsoft.Identity.Client" Version="4.22.0" />

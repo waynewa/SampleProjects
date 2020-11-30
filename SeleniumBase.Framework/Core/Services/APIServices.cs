@@ -13,7 +13,7 @@ namespace SeleniumBase.Framework.Core.Services
     /// </summary>
     public static class APIServices
     {
-        private static string PAT = "j7c5wxdbimp7ufoz5crmrtsxygaamlv7vbvkgbexwjyfokkurcfa";
+        private static string PAT = "sample Personal Access Token ";
         
         /// <summary>
         /// Post request using the RestSharp Api services

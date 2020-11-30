@@ -1,25 +1,23 @@
-﻿using AngleSharp;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using SeleniumBase.Framework.Core.Selenium;
 using System;
 using System.Diagnostics;
 using System.Threading;
-using System.Web;
 
 namespace SeleniumBase.Framework.Core.Helpers
 {
     public static class MicrosoftLoginHelper
     {
         private static string MSUrl = "https://login.microsoftonline.com/";
-        private static string TenantId = "c92c5826-4969-414a-a289-1409683ebac0";
-        private static string ClientId = "0603f71f-37ac-4945-87df-e40f050e049d";
+        private static string ClientId = "";
+        private static string TenantId = "";
         private static string AuthEndPoint = "/oauth2/v2.0/authorize";
-        private static string ScopeRead = "http://OAuth-Ryman360-Dev/project.read";
-        private static string ScopeWrite = "http://OAuth-Ryman360-Dev/project.write";
+        private static string ScopeRead = "http://sample/project.read";
+        private static string ScopeWrite = "http://sample/project.write";
         private static string State = "";
         private static string Nonce = "0001";
-        private static string RedirectUrl = "https://appsvc-ryman360-dev-syd-backend-testpoc.azurewebsites.net/docs/oauth2-redirect.html";
-        private static string UserEmailAddress = "appsteamtest@rymanhealthcare.com";
+        private static string RedirectUrl = "https://sample/docs/oauth2-redirect.html";
+        private static string UserEmailAddress = "sample@test.com";
 
         /// <summary>
         /// Microsoft Login Tile Elements 
@@ -48,7 +46,7 @@ namespace SeleniumBase.Framework.Core.Helpers
                     {
                         if (MicrosoftUserPasswordInput.Displayed)
                         {
-                            Utils.Utils.SendKeys(MicrosoftUserPasswordInput, "mistyview33!");
+                            Utils.Utils.SendKeys(MicrosoftUserPasswordInput, "samplePassword");
                             Utils.Utils.ClickOnElement(MicrosoftTileNextButton, "NextButton");
                         }
                     }
@@ -68,7 +66,7 @@ namespace SeleniumBase.Framework.Core.Helpers
                     {
                         if (MicrosoftUserPasswordInput.Displayed)
                         {
-                            Utils.Utils.SendKeys(MicrosoftUserPasswordInput, "mistyview33!");
+                            Utils.Utils.SendKeys(MicrosoftUserPasswordInput, "samplePassword");
                             Utils.Utils.ClickOnElement(MicrosoftTileNextButton, "NextButton");
                         }
                     }
