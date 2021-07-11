@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium.Chrome;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
@@ -34,8 +35,6 @@ namespace SeleniumBase.Framework.Core.Selenium
             chromeOption.AddArguments("start-maximized");
             chromeOption.AddArguments("incognito");
             chromeOption.AddArguments("test-type");
-            chromeOption.AddAdditionalCapability(CapabilityType.Version, "Any", true);
-            chromeOption.AddAdditionalCapability(CapabilityType.Platform, "Windows", true);
 
             return chromeOption;
         }
@@ -68,8 +67,8 @@ namespace SeleniumBase.Framework.Core.Selenium
         public EdgeOptions GetEdgeOptions()
         {
             EdgeOptions edgeOptions = new EdgeOptions();
-            edgeOptions.AddAdditionalCapability("InPrivate", true);
-            edgeOptions.AddAdditionalCapability("ignoreZoomSetting", true);
+            edgeOptions.AddAdditionalOption("InPrivate", true);
+            edgeOptions.AddAdditionalOption("ignoreZoomSetting", true);
             return edgeOptions;
         }
     }
