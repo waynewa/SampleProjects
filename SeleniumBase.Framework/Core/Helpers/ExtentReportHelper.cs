@@ -1,7 +1,6 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 using System;
-using System.Web.UI;
 using static SeleniumBase.Framework.Core.Helpers.LogHelper;
 
 namespace SeleniumBase.Framework.Core.Helpers
