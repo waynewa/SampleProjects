@@ -16,18 +16,17 @@ namespace SampleAPITests.Tests.Base
         private static AventStack.ExtentReports.ExtentReports extent { get; set; }
         public static ExtentTest extentTest { get; set; }
         public static string AccessToken { get; set; }
-        public static string PAT { get; set; }
-        public static string ServerUrl { get; set; }
-        public static string ProjectName { get; set; }
-        public static string ApiCallVersion { get; set; }
-        public static string TestRunName { get; set; }
-        public static string ApiEndPoint { get; set; }
+        public static string TestUrl { get; set; }
+        public static string Path { get; set; }
+
 
         [AssemblyInitialize]
         public static void BeforeAll(TestContext testContext)
         {
             TestContextLoader = new TestContextLoader(testContext);
             CreateTestResultsDirectory();
+            TestUrl = TestContextLoader.GetProperty("TestUrl", "https://reqres.in/");
+            Path = TestContextLoader.GetProperty("Path", "api/users?page=2");
             extent = StartReport();
             
         }
@@ -45,12 +44,10 @@ namespace SampleAPITests.Tests.Base
         {
             try
             {
-                Driver.Quit();
                 Log.Pass(TestContext.TestName);
             }
             catch (Exception e)
             {
-                Driver.Quit();
                 Log.Error($"Test Clean up Failed :{e.Message}");
             }
         }

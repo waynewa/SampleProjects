@@ -2,20 +2,7 @@
 <RunSettings>
   <!-- Parameters used by tests at runtime on the New Environment -->
   <TestRunParameters>
-    <Parameter name="TestUrl" value="https://demoqa.com" />
-
-    <!--Browser Type has a Selection of 
-    - Firefox
-    - InternetExplorer
-    - Edge
-    - Chrome
-    -->
-
-    <Parameter name="BrowserType" value="Chrome" />
-    <Parameter name="PAT" value="Sample Access Token from DevOPs"/>
-    <Parameter name="ServerUrl" value="https://rymanhealthcare.visualstudio.com/"/>
-    <Parameter name="ProjectName" value="Sample Project Name"/>
-    <Parameter name="TestRunName" value="Selenium Automation Test Run"/>
-    <Parameter name="ApiCallVersion" value="?api-version=6.0"/>
+    <Parameter name="TestUrl" value="https://reqres.in/" />
+    <Parameter name="Path" value="api/users?page=2" />
   </TestRunParameters>
 </RunSettings>
