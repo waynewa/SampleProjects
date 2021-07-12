@@ -3,10 +3,7 @@ using static SeleniumBase.Framework.Core.Helpers.ExtentReportHelper;
 using SeleniumBase.Framework.Core.Selenium;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Threading;
 using AventStack.ExtentReports;
-using SeleniumBase.Framework.Core.Services;
-using SeleniumBase.Framework.Core.Helpers;
 
 namespace SampleAPITests.Tests.Base
 {
@@ -30,12 +27,6 @@ namespace SampleAPITests.Tests.Base
         public static void BeforeAll(TestContext testContext)
         {
             TestContextLoader = new TestContextLoader(testContext);
-            BrowserType = TestContextLoader.GetProperty("BrowserType", "Chrome");
-            PAT = TestContextLoader.GetProperty("PAT", "SamplePAT$%^&*()");
-            ServerUrl = TestContextLoader.GetProperty("ServerUrl", "Https://SampleURL.com");
-            ProjectName = TestContextLoader.GetProperty("ProjectName", "Sample Poject Name");
-            ApiCallVersion = TestContextLoader.GetProperty("ApiCallVersion", "?api-version=6.0");
-            TestRunName = TestContextLoader.GetProperty("TestRunName", "SampleTestName_99999");
             CreateTestResultsDirectory();
             extent = StartReport();
             
@@ -46,7 +37,6 @@ namespace SampleAPITests.Tests.Base
         {
             extentTest = CreateTest(extent,TestContext.TestName);
             SetLogger(TestContext.TestName);
-            AccessToken = MicrosoftLoginHelper.MicrosoftLoginGetAPICode();
             Log.Info("Test Initilization Complete");
         }
 
