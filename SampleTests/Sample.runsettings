@@ -11,7 +11,7 @@
     - Chrome
     -->
 
-    <Parameter name="BrowserType" value="Chrome" />
+    <Parameter name="BrowserType" value="Edge" />
 	<Parameter nmae="ChromeHeadlessMode" value="false" />
 
   </TestRunParameters>

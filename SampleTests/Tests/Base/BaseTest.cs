@@ -27,6 +27,8 @@ namespace SampleTests.Tests.Base
             BrowserType = TestContextLoader.GetProperty("BrowserType", "Chrome");
             CreateTestResultsDirectory();
             extent = StartReport();
+            Driver.Init(BrowserType);
+            
         }
 
         [TestInitialize]
@@ -34,7 +36,6 @@ namespace SampleTests.Tests.Base
         {
             extentTest = CreateTest(extent,TestContext.TestName);
             SetLogger(TestContext.TestName);
-            Driver.Init(BrowserType); 
             Driver.Goto(TestUrl);
             Thread.Sleep(3000);
             Log.Info("Test Initilization Complete");
@@ -45,14 +46,11 @@ namespace SampleTests.Tests.Base
         {
             try
             {
-
-                
-                Driver.Quit();
                 Log.Pass(TestContext.TestName);
             }
             catch (Exception e)
             {
-                Driver.Quit();
+                
                 Log.Error($"Test Clean up Failed :{e.Message}");
             }
         }
@@ -60,6 +58,7 @@ namespace SampleTests.Tests.Base
         public static void CleanUpClass()
         {
             Log.Info("Class Clean Up Completed");
+            Driver.Quit();
             extent.Flush();
         }
         public void WriteStepToLogs(string message)
