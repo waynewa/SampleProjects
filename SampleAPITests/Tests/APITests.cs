@@ -4,6 +4,7 @@ using SampleAPITests.Tests.Base;
 using SeleniumBase.Framework.Core.Services;
 using System;
 using System.Net;
+using System.Text.Json.Nodes;
 
 namespace SampleAPITests.Tests
 {
