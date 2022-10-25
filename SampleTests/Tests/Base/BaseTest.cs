@@ -16,7 +16,6 @@ namespace SampleTests.Tests.Base
         public TestContext TestContext { get; set; }
         public static string TestUrl { get; set; }
         public static string BrowserType { get; set; }
-        public static string GridUrl { get; set; }
         private static AventStack.ExtentReports.ExtentReports extent { get; set; }
         public static ExtentTest extentTest { get; set; }
 
@@ -26,7 +25,6 @@ namespace SampleTests.Tests.Base
             TestContextLoader = new TestContextLoader(testContext);
             TestUrl = TestContextLoader.GetProperty("TestUrl", "https://demoqa.com");
             BrowserType = TestContextLoader.GetProperty("BrowserType", "Chrome");
-            GridUrl = TestContextLoader.GetProperty("GridUrl", "http://127.0.0.1:4444/wd/hub");
             CreateTestResultsDirectory();
             extent = StartReport();
         }
@@ -36,10 +34,7 @@ namespace SampleTests.Tests.Base
         {
             extentTest = CreateTest(extent,TestContext.TestName);
             SetLogger(TestContext.TestName);
-            if (BrowserType == "Remote")
-            { Driver.Init(BrowserType, GridUrl); }
-            else 
-            { Driver.Init(BrowserType); }
+            Driver.Init(BrowserType); 
             Driver.Goto(TestUrl);
             Thread.Sleep(3000);
             Log.Info("Test Initilization Complete");

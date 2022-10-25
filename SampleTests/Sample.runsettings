@@ -3,7 +3,6 @@
   <!-- Parameters used by tests at runtime on the New Environment -->
   <TestRunParameters>
     <Parameter name="TestUrl" value="https://demoqa.com" />
-    <Parameter name="GridUrl" value="http://10.219.21.90:4444/wd/hub" />
 
     <!--Browser Type has a Selection of 
     - Firefox
@@ -13,6 +12,7 @@
     -->
 
     <Parameter name="BrowserType" value="Chrome" />
+	<Parameter nmae="ChromeHeadlessMode" value="false" />
 
   </TestRunParameters>
 </RunSettings>
