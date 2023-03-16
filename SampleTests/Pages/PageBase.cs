@@ -1,36 +1,30 @@
 ﻿using SeleniumBase.Framework.Core.Selenium;
 using OpenQA.Selenium;
-using SampleTests.Pages.ToolsQAPages;
 using SeleniumBase.Framework.Core.Utils;
+using System.Threading;
 
 namespace SampleTests.Pages
 {
     public abstract class PageBase
     {
-        public readonly ToolsQAHomePage homePage;
-        public readonly ToolsQAElementsPage elementsPage;
-        public readonly ToolsQAFormsPage formsPage;
+        public readonly WWiTHomePage homePage;
+        public readonly WWiTContactPage contactPage;
 
         public PageBase()
         {
-            homePage = new ToolsQAHomePage();
-            elementsPage = new ToolsQAElementsPage();
-            formsPage = new ToolsQAFormsPage();
+            homePage = new WWiTHomePage();
+            contactPage = new WWiTContactPage();
+
         }
 
-        public static IWebElement HeaderText => Driver.FindElement(By.XPath("//body/div[@id='app']/div[1]/div[1]/div[1]/div[1]"));
-        public static IWebElement SubMenuItem(string menuItem) => Driver.FindElement(By.XPath($"//span[contains(text(),'{menuItem}')]"));
-        public static IWebElement SubmitButton => Driver.FindElement(By.CssSelector("#submit"));
+        public static IWebElement HeaderText => Driver.FindElement(By.XPath("///*[@id=\"root\"]/main/section[1]/div/div/div[1]/div[1]/h1"));
+        public static IWebElement NavBarItem(string navPage)  => Driver.FindElement(By.LinkText(navPage));
 
-        public static void NavigateToSubMenuItem(string menuItem)
+        public static void NavigatePage(string navPage)
         {
-            Utils.ClickOnElement(SubMenuItem(menuItem));
+            Utils.ClickOnElement(NavBarItem(navPage));
+            Thread.Sleep(3000);
         }
 
-        public static void ClickOnSubmitButton()
-        {
-                Utils.ScrollToElement(SubmitButton);
-                Utils.ClickOnElement(SubmitButton, "Submit Button");
-        }
     }
 }
