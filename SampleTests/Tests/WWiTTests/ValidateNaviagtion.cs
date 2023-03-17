@@ -13,8 +13,18 @@ namespace SampleTests.Tests.WWiTTests
         [TestMethod]
         public void ClickOnContactNavigationLink() {
 
+            /// Validating that the Contact heading is displayed 
             PageBase.NavigatePage("Contact");
-            Assert.IsTrue(WWiTContactPage.ContactTitle.Displayed, "Contact");
+            Assert.AreEqual("Contact",PageBase.PageHeading.Text);
+            
+            /// Validating that the About heading is displayed 
+            PageBase.NavigatePage("About");
+            Assert.AreEqual("About", PageBase.PageHeading.Text);
+
+            /// Validating that the Services heading is displayed 
+            PageBase.NavigatePage("Services");
+            Assert.AreEqual("Services", PageBase.PageHeading.Text);
+
 
         }
     }

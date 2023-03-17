@@ -7,9 +7,9 @@ Requirements to get the testcases updated.
 Implementation in the runsettings file 
 ******************************
     <Parameter name="BrowserType" value="Chrome" />
-    <Parameter name="PAT" value="j7c5wxdbimp7ufoz5crmrtsxygaamlv7vbvkgbexwjyfokkurcfa"/>
-    <Parameter name="ServerUrl" value="https://rymanhealthcare.visualstudio.com/"/>
-    <Parameter name="ProjectName" value="MyRyman%20Development"/>
+    <Parameter name="PAT" value="1232434232533"/>
+    <Parameter name="ServerUrl" value="https://project.visualstudio.com/"/>
+    <Parameter name="ProjectName" value="myProject"/>
     <Parameter name="TestRunName" value="Selenium Automation Test Run"/>
     <Parameter name="ApiCallVersion" value="?api-version=6.0"/>
 ******************************
@@ -43,10 +43,10 @@ Test Case implementation
              PAT,
              ServerUrl,
              ProjectName,
-             "myRyman - Master",
-            "101659 - Progress notes race condition",
+             "myProject - Master",
+            "101659 - My Test case",
             101743,
-            "Jun Fernandez",
+            "My User",
             "Passed", ApiCallVersion);
         }
         [TestMethod]
@@ -56,10 +56,10 @@ Test Case implementation
              PAT,
              ServerUrl,
              ProjectName,
-             "myRyman - Master",
-            "101659 - Progress notes race condition",
+             "myProject - Master",
+            "101659 - MyTest Case",
              101743,
-            "Jun Fernandez",
+            "My User",
             "Failed", ApiCallVersion);
         }
 		

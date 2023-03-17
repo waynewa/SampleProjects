@@ -5,7 +5,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading;
 using AventStack.ExtentReports;
-using SeleniumBase.Framework.Core.Helpers;
 
 namespace SampleTests.Tests.Base
 {
