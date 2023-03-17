@@ -22,3 +22,9 @@ SeleniumBase.Framework/obj/project.assets.json
 /SampleAPITests/obj
 SampleAPITests/bin/Debug
 SampleTests/bin/Debug
+SamplespecFlowProject/bin
+SamplespecFlowProject/obj
+SampleGUITests/bin
+SampleGUITests/obj
+SamplespecFlowTests/bin
+SamplespecFlowTests/obj

@@ -2,7 +2,7 @@
 using SampleTests.Pages;
 using SampleTests.Tests.Base;
 
-namespace SampleTests.Tests.ToolsQATests
+namespace SampleTests.Tests.WWiTTests
 {
     [TestClass]
     public class LoadHomePageAndValidateHeader : BaseTest
@@ -10,7 +10,8 @@ namespace SampleTests.Tests.ToolsQATests
         [TestMethod]
         public void LoadHomePageValidateHeader()
         {
-            Assert.IsTrue(ToolsQAHomePage.HeaderTitle.Displayed, "The Home page does not display correct Title");
+
+            Assert.IsTrue(WWiTHomePage.HeaderTitle.Displayed, "Welcome To WWiT");
         }
 
     }
