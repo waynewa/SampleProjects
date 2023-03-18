@@ -15,7 +15,8 @@ with Selenium WebDriver in C#.
 
 
 
-###Saple API Tests
+### Saple API Tests
+
 The WWSeleniumBase Framework offers developers a powerful tool for building automated tests with Selenium WebDriver. In addition 
 to its browser automation capabilities, the framework also includes functionality for testing APIs. This project contains a series 
 of basic API tests that are linked to the WWSeleniumBase Framework. These tests are designed to provide developers with a starting 
@@ -25,7 +26,8 @@ are a seasoned developer or just getting started with API testing, this project 
 streamline their testing process and improve the overall quality of their software.
 	
 	
-###Saple GUI Tests
+### Saple GUI Tests
+
 The project that I'm referring to contains a set of basic GUI tests that are linked to the WWSeleniumBase Framework. These tests 
 are designed to verify the functionality and user interface of web applications using Selenium WebDriver. The tests cover basic 
 scenarios such as navigation, data entry, and form submission.By using the WWSeleniumBase Framework, developers can easily create 
@@ -33,7 +35,8 @@ and maintain automated tests that are reliable, efficient, and scalable. Further
 customized to fit specific testing needs, making it a valuable resource for anyone looking to build a comprehensive automated 
 testing suite with Selenium WebDriver.
 	
-###Saple SpecFlow Tests
+### Saple SpecFlow Tests
+
 This Project contains a set of basic SpecFlow tests that are linked to the WWSeleniumBase Framework. These tests are designed to 
 test the functionality of web applications using SpecFlow, a popular behavior-driven development (BDD) tool that allows developers 
 to write test scenarios in natural language. By combining SpecFlow with the WWSeleniumBase Framework, developers can create powerful 
@@ -42,7 +45,7 @@ scenarios and to communicate the test results to stakeholders. Overall, this pro
 to implement SpecFlow tests with the WWSeleniumBase Framework.
 	
 
-##Work still in progress
+## Work still in progress
 
 This project is currently a work in progress. The developers are actively working on implementing new features and improving the 
 existing ones. As with any project that is still in development, there may be bugs or issues that need to be addressed. However, 
@@ -52,7 +55,8 @@ encourage anyone who is interested in the project to contribute their ideas and 
 of the development team, this project is sure to become an even more valuable resource for developers who are looking to build 
 robust and efficient automated testing frameworks.
 
-####Current work
-	-- SpecFlow project is still in progress 
-	-- Test Project to be converted to use startup files
-	-- Additional updates in general 
+#### Current work
+
+-- SpecFlow project is still in progress 
+-- Test Project to be converted to use startup files
+-- Additional updates in general 
