@@ -9,9 +9,10 @@ with Selenium WebDriver in C#.
 
 
 ## Projects
- -- SapleAPITests
- -- SampleGUITests
- -- SampleSpecFlowTests
+ 
+ * SapleAPITests
+ * SampleGUITests
+ * SampleSpecFlowTests
 
 
 
@@ -57,6 +58,6 @@ robust and efficient automated testing frameworks.
 
 #### Current work
 
--- SpecFlow project is still in progress 
--- Test Project to be converted to use startup files
--- Additional updates in general 
+* SpecFlow project is still in progress 
+* Test Project to be converted to use startup files
+* Additional updates in general 
