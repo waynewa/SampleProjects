@@ -5,6 +5,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading;
 using AventStack.ExtentReports;
+using AventStack.ExtentReports.Model;
+using SeleniumBase.Framework.Core.Helpers;
 
 namespace SampleTests.Tests.Base
 {
@@ -19,6 +21,8 @@ namespace SampleTests.Tests.Base
         private static AventStack.ExtentReports.ExtentReports extent { get; set; }
         public static ExtentTest extentTest { get; set; }
 
+
+
         [AssemblyInitialize]
         public static void BeforeAll(TestContext testContext)
         {
@@ -30,6 +34,7 @@ namespace SampleTests.Tests.Base
             extent = StartReport();
             Driver.Init(BrowserType, ChromeHeadlessMode);
             
+            
         }
 
         [TestInitialize]
@@ -39,7 +44,7 @@ namespace SampleTests.Tests.Base
             SetLogger(TestContext.TestName);
             Driver.Goto(TestUrl);
             Thread.Sleep(3000);
-            Log.Info("Test Initilization Complete");
+            LogHelper.Log.Info("Test Initilization Complete");
         }
 
         [TestCleanup]
@@ -47,29 +52,29 @@ namespace SampleTests.Tests.Base
         {
             try
             {
-                Log.Pass(TestContext.TestName);
+                LogHelper.Log.Pass(TestContext.TestName);
             }
             catch (Exception e)
             {
-                
-                Log.Error($"Test Clean up Failed :{e.Message}");
+
+                LogHelper.Log.Error($"Test Clean up Failed :{e.Message}");
             }
         }
         [AssemblyCleanup]
         public static void CleanUpClass()
         {
-            Log.Info("Class Clean Up Completed");
+            LogHelper.Log.Info("Class Clean Up Completed");
             Driver.Quit();
             extent.Flush();
         }
         public void WriteStepToLogs(string message)
         {
-            Log.Step(message);
+            LogHelper.Log.Step(message);
         }
 
         public void WriteFailToLogs(string message)
         {
-            Log.Error(message);
+            LogHelper.Log.Error(message);
         }
     }
 }

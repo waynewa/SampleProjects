@@ -1,4 +1,6 @@
-# Sample Projects ![WWiTLogo](https://github.com/waynewa/SampleProjects/blob/main/WWiTLogo.ico)
+![WWiTLogo](https://github.com/waynewa/SampleProjects/blob/main/WWiTLogo.ico)
+
+# Sample Projects 
 
 This offers multiple C# sample projects based on the WWSeleniumBase Framework (https://github.com/waynewa/WWiTSeleniumBase). 
 These projects are designed to provide developers with a starting point for building automated tests with Selenium WebDriver. 
