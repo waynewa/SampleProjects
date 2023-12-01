@@ -2,12 +2,8 @@
 
 # Sample Projects 
 
-This offers multiple C# sample projects based on the WWSeleniumBase Framework (https://github.com/waynewa/WWiTSeleniumBase). 
-These projects are designed to provide developers with a starting point for building automated tests with Selenium WebDriver. 
-While the projects are regularly updated, it's important to note that they might go out of date with some features. Therefore, 
-developers should be prepared to modify the code as necessary to ensure compatibility with their specific testing needs. 
-Nonetheless, the sample projects provide a solid foundation for building robust and efficient automated testing frameworks 
-with Selenium WebDriver in C#.
+
+This resource presents several C# sample projects derived from the WWSeleniumBase Framework (https://github.com/waynewa/WWiTSeleniumBase). The purpose of these projects is to furnish developers with a foundation for initiating automated tests using Selenium WebDriver. Although these projects undergo regular updates, it is essential to acknowledge that certain features may become outdated over time. Consequently, developers should be ready to make necessary code modifications to align with their unique testing requirements. Nonetheless, these sample projects establish a sturdy groundwork for constructing resilient and effective automated testing frameworks with Selenium WebDriver in C#.
 
 
 ## Projects
@@ -20,46 +16,24 @@ with Selenium WebDriver in C#.
 
 ### Saple API Tests
 
-The WWSeleniumBase Framework offers developers a powerful tool for building automated tests with Selenium WebDriver. In addition 
-to its browser automation capabilities, the framework also includes functionality for testing APIs. This project contains a series 
-of basic API tests that are linked to the WWSeleniumBase Framework. These tests are designed to provide developers with a starting 
-point for building more complex API testing scenarios. By leveraging the features of the WWSeleniumBase Framework, developers can 
-create robust, scalable, and reliable API tests that can be easily integrated into their existing testing workflows. Whether you 
-are a seasoned developer or just getting started with API testing, this project is a valuable resource for anyone looking to 
-streamline their testing process and improve the overall quality of their software.
+The WWSeleniumBase Framework is a potent tool for developers to construct automated tests using Selenium WebDriver. Beyond its capabilities in browser automation, the framework also encompasses features for API testing. This initiative comprises a set of fundamental API tests interconnected with the WWSeleniumBase Framework, serving as a foundational guide for developers venturing into more intricate API testing scenarios. By harnessing the functionalities of the WWSeleniumBase Framework, developers can forge resilient, scalable, and dependable API tests seamlessly integrated into their current testing workflows. Whether you possess extensive programming experience or are initiating your journey into API testing, this project stands as a valuable asset, facilitating the optimization of testing processes and enhancing the overall software quality.
 	
 	
 ### Saple GUI Tests
 
-The project that I'm referring to contains a set of basic GUI tests that are linked to the WWSeleniumBase Framework. These tests 
-are designed to verify the functionality and user interface of web applications using Selenium WebDriver. The tests cover basic 
-scenarios such as navigation, data entry, and form submission.By using the WWSeleniumBase Framework, developers can easily create 
-and maintain automated tests that are reliable, efficient, and scalable. Furthermore, the tests in this project can be easily 
-customized to fit specific testing needs, making it a valuable resource for anyone looking to build a comprehensive automated 
-testing suite with Selenium WebDriver.
+The mentioned project encompasses a collection of elementary GUI tests connected to the WWSeleniumBase Framework. These tests are specifically crafted to validate the functionality and user interface of web applications through Selenium WebDriver. They encompass fundamental scenarios like navigation, data entry, and form submission. Through the utilization of the WWSeleniumBase Framework, developers can effortlessly generate and uphold automated tests that exhibit reliability, efficiency, and scalability. Additionally, the tests within this project offer easy customization to suit particular testing requirements, rendering it an invaluable asset for those aiming to establish a comprehensive automated testing suite with Selenium WebDriver.
 	
 ### Saple SpecFlow Tests
 
-This Project contains a set of basic SpecFlow tests that are linked to the WWSeleniumBase Framework. These tests are designed to 
-test the functionality of web applications using SpecFlow, a popular behavior-driven development (BDD) tool that allows developers 
-to write test scenarios in natural language. By combining SpecFlow with the WWSeleniumBase Framework, developers can create powerful 
-and comprehensive test suites that cover a wide range of scenarios. Moreover, the use of SpecFlow makes it easy to understand the test 
-scenarios and to communicate the test results to stakeholders. Overall, this project provides a great starting point for anyone looking 
-to implement SpecFlow tests with the WWSeleniumBase Framework.
+
+This project includes a series of fundamental SpecFlow tests interconnected with the WWSeleniumBase Framework. These tests are crafted to assess the functionality of web applications using SpecFlow, a widely used behavior-driven development (BDD) tool that enables developers to articulate test scenarios in natural language. Through the integration of SpecFlow and the WWSeleniumBase Framework, developers can construct robust and all-encompassing test suites spanning a diverse array of scenarios. Additionally, the incorporation of SpecFlow facilitates clear comprehension of the test scenarios and seamless communication of test results to stakeholders. In essence, this project serves as an excellent starting point for those seeking to implement SpecFlow tests with the WWSeleniumBase Framework.
 	
 
 ## Work still in progress
 
-This project is currently a work in progress. The developers are actively working on implementing new features and improving the 
-existing ones. As with any project that is still in development, there may be bugs or issues that need to be addressed. However, 
-the team is committed to ensuring that the project is stable and reliable, and they are working diligently to make sure that it 
-meets the highest standards of quality. The developers are also open to feedback and suggestions from the community, and they 
-encourage anyone who is interested in the project to contribute their ideas and expertise. With the ongoing work and dedication 
-of the development team, this project is sure to become an even more valuable resource for developers who are looking to build 
-robust and efficient automated testing frameworks.
+This project is presently undergoing active development, with developers engaged in implementing new features and enhancing existing ones. Given its current developmental phase, it is possible that bugs or issues may arise and require attention. Nevertheless, the team is unwavering in its commitment to establishing a stable and reliable project, diligently striving to meet the highest standards of quality. The developers actively welcome feedback and suggestions from the community, encouraging anyone interested in the project to contribute their ideas and expertise. With the ongoing dedication of the development team, this project is poised to evolve into an even more valuable resource for developers aiming to construct resilient and efficient automated testing frameworks.
 
 #### Current work
 
-* SpecFlow project is still in progress 
 * Test Project to be converted to use startup files
 * Additional updates in general 
