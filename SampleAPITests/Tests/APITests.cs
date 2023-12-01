@@ -31,8 +31,8 @@ namespace SampleAPITests.Tests
             var response = GenericAPICalls.Get(Url,  HttpStatusCode.OK);
             var display = response.Content.ToString();
             Debug.WriteLine(display);
-            Assert.IsTrue(display.Contains("id"),"Id is not displayed");
-            Assert.IsTrue(display.Contains("name"),"Name is not displayed");
+            Assert.IsTrue(display.Contains("page"),"Page is not displayed");
+            Assert.IsTrue(display.Contains("data"),"Data is not displayed");
             WriteStepToLogs($"Response : {display}");
         }
     }

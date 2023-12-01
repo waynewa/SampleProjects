@@ -32,7 +32,7 @@ namespace SamplespecFlowProject.Steps
 
             _extentTest = CreateTest(extent, "Navigation");
             SetLogger("SpecFlow Tests");
-            Driver.Init("Chrome", false);
+            Driver.Init("Chrome", true);
             Driver.Goto(navigationUrl);
             Driver.Quit();
         }

@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="C:\Users\si565137\.nuget\packages\wwseleniumbase.framework\1.0.0.8\contentFiles\any\net6.0\WWiTLogoWhite.ico" />
-  </ItemGroup>
-
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="coverlet.collector" Version="6.0.0">
       <PrivateAssets>all</PrivateAssets>
