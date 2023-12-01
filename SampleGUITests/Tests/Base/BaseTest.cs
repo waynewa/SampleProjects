@@ -29,7 +29,7 @@ namespace SampleTests.Tests.Base
             TestContextLoader = new TestContextLoader(testContext);
             TestUrl = TestContextLoader.GetProperty("TestUrl", "https://wwit.netlify.app");
             BrowserType = TestContextLoader.GetProperty("BrowserType", "Chrome");
-            ChromeHeadlessMode = TestContextLoader.GetProperty("ChromeHeadlessMode", false);
+            ChromeHeadlessMode = TestContextLoader.GetProperty("ChromeHeadlessMode", true);
             CreateTestResultsDirectory();
             extent = StartReport();
             Driver.Init(BrowserType, ChromeHeadlessMode);
