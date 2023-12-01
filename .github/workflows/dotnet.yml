@@ -26,11 +26,8 @@ jobs:
             ${{ runner.os }}-nuget
 
       - name: Restore dependencies
-        working-directory: SampleTests
         run: dotnet restore
       - name: Build
-        working-directory: SampleTests
         run: dotnet build --no-restore
       - name: Test
-        working-directory: SampleTests
         run: dotnet test --no-build --verbosity normal
