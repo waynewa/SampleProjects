@@ -23,7 +23,7 @@ namespace SampleTests.Tests.WWiTTests
 
             /// Validating that the Services heading is displayed 
             PageBase.NavigatePage("Services");
-            Assert.AreEqual("Services", PageBase.PageHeading.Text);
+            Assert.AreEqual("Computer & Laptop Repairs", PageBase.PageHeading.Text);
 
 
         }

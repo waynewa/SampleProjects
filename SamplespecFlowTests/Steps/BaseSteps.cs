@@ -1,22 +1,27 @@
-﻿using SeleniumBase.Framework.Core.Selenium;
+﻿using static SeleniumBase.Framework.Core.Helpers.LogHelper;
+using static SeleniumBase.Framework.Core.Helpers.ExtentReportHelper;
+using SeleniumBase.Framework.Core.Selenium;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
+using AventStack.ExtentReports;
+using AventStack.ExtentReports.Model;
+using SeleniumBase.Framework.Core.Helpers;
+
 
 namespace SamplespecFlowProject.Steps
 {
     [Binding]
     public class BaseSteps
     {
-        
+        private static AventStack.ExtentReports.ExtentReports extent { get; set; }
+        public static ExtentTest _extentTest { get; set; }
 
         [BeforeTestRun]
         public static void InitializeTest()
         {
-          
-
+            CreateTestResultsDirectory();
+            extent = StartReport();
         }
 
 
@@ -24,8 +29,12 @@ namespace SamplespecFlowProject.Steps
         [StepDefinition("I navigate to the \"(.*)\"")]
         public void NavigateToUrl(string navigationUrl) {
 
+
+            _extentTest = CreateTest(extent, "Navigation");
+            SetLogger("SpecFlow Tests");
             Driver.Init("Chrome", false);
             Driver.Goto(navigationUrl);
+            Driver.Quit();
         }
 
         [Then("I expect to see the \"(.*)\"")]
@@ -34,9 +43,8 @@ namespace SamplespecFlowProject.Steps
         }
 
         [AfterTestRun]
-        public void TearDown()
+        public static void TearDown()
         {
-            Driver.Quit();
         }
     }
 }

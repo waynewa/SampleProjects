@@ -1,8 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RazorEngine.Compilation.ImpromptuInterface;
 using RestSharp;
 using SampleAPITests.Tests.Base;
 using SeleniumBase.Framework.Core.Services;
 using System;
+using System.Diagnostics;
 using System.Net;
 using System.Text.Json.Nodes;
 
@@ -28,8 +30,9 @@ namespace SampleAPITests.Tests
             var Url = TestUrl + Path;
             var response = GenericAPICalls.Get(Url,  HttpStatusCode.OK);
             var display = response.Content.ToString();
-            Assert.IsTrue(display.Contains("id"));
-            Assert.IsTrue(display.Contains("email"));
+            Debug.WriteLine(display);
+            Assert.IsTrue(display.Contains("id"),"Id is not displayed");
+            Assert.IsTrue(display.Contains("name"),"Name is not displayed");
             WriteStepToLogs($"Response : {display}");
         }
     }
