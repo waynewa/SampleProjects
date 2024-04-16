@@ -17,7 +17,7 @@ namespace SampleTests.Tests.Base
         public TestContext TestContext { get; set; }
         public static string TestUrl { get; set; }
         public static string BrowserType { get; set; }
-        public static bool ChromeHeadlessMode { get; set; }
+        public static bool IsHeadless { get; set; }
         private static AventStack.ExtentReports.ExtentReports extent { get; set; }
         public static ExtentTest extentTest { get; set; }
 
@@ -29,10 +29,10 @@ namespace SampleTests.Tests.Base
             TestContextLoader = new TestContextLoader(testContext);
             TestUrl = TestContextLoader.GetProperty("TestUrl", "https://wwit.netlify.app");
             BrowserType = TestContextLoader.GetProperty("BrowserType", "Chrome");
-            ChromeHeadlessMode = TestContextLoader.GetProperty("ChromeHeadlessMode", true);
+            IsHeadless = TestContextLoader.GetProperty("IsHeadless", true);
             CreateTestResultsDirectory();
             extent = StartReport();
-            Driver.Init(BrowserType, ChromeHeadlessMode);
+            Driver.Init(BrowserType, IsHeadless,"");
             
             
         }

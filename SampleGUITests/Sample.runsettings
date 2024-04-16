@@ -12,7 +12,7 @@
     -->
 
     <Parameter name="BrowserType" value="Chrome" />
-	<Parameter nmae="ChromeHeadlessMode" value="true" />
+	<Parameter name="IsHeadless" value="false" />
 
   </TestRunParameters>
 </RunSettings>
