@@ -16,7 +16,7 @@ namespace SampleTests.Pages
         /// Element Identification functions. 
         /// Allows for elements on the page to be Identified and utilized.
         /// </summary>
-        public static IWebElement HeaderTitle => Driver.FindElement(By.CssSelector("#root > main > section.features-split.section > div > div > div:nth-child(1) > div.split-item-content.center-content-mobile.reveal-from-right.is-revealed > h1"));
+        public static IWebElement HeaderTitle => Driver.FindElement(By.XPath("//h1[@data-testid='heading_home']"));
         public static IWebElement NavigationTile(string NavName) => Driver.FindElement(By.LinkText(NavName));
 
         ///// <summary>

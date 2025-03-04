@@ -15,15 +15,15 @@ namespace SampleTests.Tests.WWiTTests
 
             /// Validating that the Contact heading is displayed 
             PageBase.NavigatePage("Contact");
-            Assert.AreEqual("Contact",PageBase.PageHeading.Text);
+            Assert.AreEqual("Contact Us", PageBase.PageHeading("contact").Text);
             
             /// Validating that the About heading is displayed 
             PageBase.NavigatePage("About");
-            Assert.AreEqual("About", PageBase.PageHeading.Text);
+            Assert.AreEqual("About", PageBase.PageHeading("about").Text);
 
             /// Validating that the Services heading is displayed 
             PageBase.NavigatePage("Services");
-            Assert.AreEqual("Computer & Laptop Repairs", PageBase.PageHeading.Text);
+            Assert.AreEqual("Services", PageBase.PageHeading("services").Text);
 
 
         }
